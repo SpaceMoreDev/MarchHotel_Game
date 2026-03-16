@@ -2,8 +2,7 @@ extends Node
 class_name PlayerCombat
 
 var player : Player
-var bulletScene = preload("res://Scenes/bullet.tscn")
-signal shoot(bullet:PackedScene, direction:float , location:Vector2)
+signal shoot(direction:float , location:Vector2)
 
 func _ready() -> void:
 	player = Global.get_player()
@@ -17,4 +16,4 @@ func _input(event: InputEvent) -> void:
 		else:
 			dir = Vector2.RIGHT.angle()
 		
-		shoot.emit(bulletScene, dir, player.position)
+		shoot.emit(dir, player.position)
