@@ -15,6 +15,10 @@ func get_player() -> Player:
 		player = get_tree().get_first_node_in_group("Player")
 	return player
  
+func get_bullet_spawner() -> Node2D:
+	return get_tree().get_first_node_in_group("BulletSpawner")
+ 
+
 func get_coin_UI_pos() -> Vector2:
 	if not player:
 		return Vector2.ZERO

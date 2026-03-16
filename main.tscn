@@ -1,8 +1,10 @@
 [gd_scene format=4 uid="uid://cvwba3pbqfk7u"]
 
+[ext_resource type="Script" uid="uid://bn8g464ahdrpj" path="res://Scripts/BulletSpawner.gd" id="1_4c57u"]
 [ext_resource type="Script" uid="uid://ljyl007km0vp" path="res://Scripts/Player.gd" id="1_272bh"]
 [ext_resource type="Texture2D" uid="uid://cnnd5ci7jjhwb" path="res://Assets/Backgrounds/background_solid_sky.png" id="1_kek77"]
 [ext_resource type="SpriteFrames" uid="uid://bcqqxasbvvvcr" path="res://Default_Character_frames.tres" id="5_272bh"]
+[ext_resource type="Script" uid="uid://yw1ftvk8khg3" path="res://Scripts/PlayerCombat.gd" id="6_5vw27"]
 [ext_resource type="TileSet" uid="uid://dqv25wrpgfo3u" path="res://Assets/platforming_tile_set.tres" id="7_5vw27"]
 [ext_resource type="Texture2D" uid="uid://qlf0t67ff52d" path="res://Assets/Backgrounds/background_clouds.png" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://xerbsa2napt0" path="res://Assets/Tiles/coin_gold.png" id="10_4c57u"]
@@ -13,35 +15,66 @@ size = Vector2(34, 71)
 
 [node name="Main" type="Node2D" unique_id=881412835]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1215615306]
+[node name="map" type="Node" parent="." unique_id=400654705]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="map" unique_id=1215615306]
 scroll_ignore_camera_zoom = true
 
-[node name="Background2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1227745104]
+[node name="Background2" type="ParallaxLayer" parent="map/ParallaxBackground" unique_id=1227745104]
 motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(768, 768)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background2" unique_id=1337361654]
+[node name="Sprite2D" type="Sprite2D" parent="map/ParallaxBackground/Background2" unique_id=1337361654]
 scale = Vector2(3, 3)
 texture = ExtResource("1_kek77")
 centered = false
 
-[node name="Background" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1109870863]
+[node name="Background" type="ParallaxLayer" parent="map/ParallaxBackground" unique_id=1109870863]
 motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(768, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background" unique_id=2082282407]
+[node name="Sprite2D" type="Sprite2D" parent="map/ParallaxBackground/Background" unique_id=2082282407]
 scale = Vector2(3, 3)
 texture = ExtResource("8_5vw27")
 centered = false
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2081961652]
+[node name="coins" type="Node" parent="map" unique_id=1793187200]
+
+[node name="coin2" parent="map/coins" unique_id=1330714917 instance=ExtResource("11_efxa6")]
+position = Vector2(1201, 559)
+
+[node name="coin" parent="map/coins" unique_id=644550678 instance=ExtResource("11_efxa6")]
+position = Vector2(429, 314)
+
+[node name="coin4" parent="map/coins" unique_id=808427961 instance=ExtResource("11_efxa6")]
+position = Vector2(1520, 314)
+
+[node name="coin5" parent="map/coins" unique_id=763361847 instance=ExtResource("11_efxa6")]
+position = Vector2(2028, 314)
+
+[node name="coin6" parent="map/coins" unique_id=1236671666 instance=ExtResource("11_efxa6")]
+position = Vector2(1708, 559)
+
+[node name="coin7" parent="map/coins" unique_id=332162365 instance=ExtResource("11_efxa6")]
+position = Vector2(2214, 559)
+
+[node name="coin3" parent="map/coins" unique_id=718701138 instance=ExtResource("11_efxa6")]
+position = Vector2(1010, 314)
+
+[node name="tilemaps" type="Node" parent="map" unique_id=1521054475]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="map/tilemaps" unique_id=2081961652]
 position = Vector2(622, 296)
 tile_map_data = PackedByteArray("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AAD//+X/AAACAAIAAAD3/+P/AAABAAIAAAD4/+P/AAAAAAIAAAD5/+P/AAAAAAIAAAD6/+P/AAACAAIAAAD1/+H/AAAEAAAAAAD1//b/AAAEAAAAAAD1//X/AAAEAAAAAAD1//T/AAAEAAAAAAD1//P/AAAEAAAAAAD1//H/AAAEAAAAAAD1//L/AAAEAAAAAAD1/+b/AAAEAAAAAAD1/+X/AAAEAAAAAAD1/+T/AAAEAAAAAAD1/+P/AAAEAAAAAAD1/+f/AAAEAAAAAAD1/+j/AAAEAAAAAAD1/+n/AAAEAAAAAAD1/+r/AAAEAAAAAAD1/+v/AAAEAAAAAAD1/+z/AAAEAAAAAAD1/+3/AAAEAAAAAAD1/+7/AAAEAAAAAAD1/+//AAAEAAAAAAD1//D/AAAEAAAAAAD1/+L/AAAEAAAAAAD1/+D/AAAEAAAAAAD1/9//AAAEAAAAAAD1/97/AAAEAAAAAAD1/93/AAAEAAAAAAD1/9z/AAAEAAAAAAD1/9v/AAAEAAAAAAD1/9r/AAAEAAAAAAD1/9n/AAAEAAAAAAD1/9j/AAAEAAAAAAD1/9f/AAAEAAAAAAD1/9b/AAAEAAAAAAD1/9X/AAAEAAAAAAD1/9T/AAAEAAAAAAD1/9P/AAAEAAAAAAD1/9L/AAAEAAAAAAD1/9H/AAAEAAAAAAD1/9D/AAAEAAAAAAD1/8//AAAEAAAAAAD1/87/AAAEAAAAAAD1/83/AAAEAAAAAAD1/8z/AAAEAAAAAAD1/8v/AAAEAAAAAAD1/8r/AAAEAAAAAAD1/8n/AAAEAAAAAAD1/8j/AAAEAAAAAAD1/8f/AAAEAAAAAAD1/8b/AAAEAAAAAAD1/8X/AAAEAAAAAAD1/8T/AAAEAAAAAAD1/8P/AAAEAAAAAAD1/8L/AAAEAAAAAAD1/8H/AAAEAAAAAAA=")
 tile_set = ExtResource("7_5vw27")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=505627560 groups=["Player"]]
-position = Vector2(625, 365)
+position = Vector2(693, 508)
+collision_layer = 2
 script = ExtResource("1_272bh")
+
+[node name="Combat" type="Node" parent="CharacterBody2D" unique_id=104314784]
+script = ExtResource("6_5vw27")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1473830675]
 sprite_frames = ExtResource("5_272bh")
@@ -59,15 +92,15 @@ position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="CharacterBody2D" unique_id=455417309]
+[node name="UI" type="CanvasLayer" parent="CharacterBody2D" unique_id=455417309]
 
-[node name="Control" type="Control" parent="CharacterBody2D/CanvasLayer" unique_id=199984907]
+[node name="Control" type="Control" parent="CharacterBody2D/UI" unique_id=199984907]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CharacterBody2D/CanvasLayer/Control" unique_id=233051789]
+[node name="HBoxContainer" type="HBoxContainer" parent="CharacterBody2D/UI/Control" unique_id=233051789]
 layout_mode = 0
 offset_left = 31.0
 offset_top = 21.0
@@ -77,11 +110,11 @@ pivot_offset = Vector2(0.5, 0.5)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 alignment = 1
 
-[node name="coinIcon" type="TextureRect" parent="CharacterBody2D/CanvasLayer/Control/HBoxContainer" unique_id=173788893]
+[node name="coinIcon" type="TextureRect" parent="CharacterBody2D/UI/Control/HBoxContainer" unique_id=173788893]
 layout_mode = 2
 texture = ExtResource("10_4c57u")
 
-[node name="Label" type="Label" parent="CharacterBody2D/CanvasLayer/Control/HBoxContainer" unique_id=754976570]
+[node name="Label" type="Label" parent="CharacterBody2D/UI/Control/HBoxContainer" unique_id=754976570]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.23137255, 0.23137255, 0.23137255, 0.38431373)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -91,23 +124,5 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 48
 text = "0"
 
-[node name="coin2" parent="." unique_id=1330714917 instance=ExtResource("11_efxa6")]
-position = Vector2(1201, 559)
-
-[node name="coin" parent="." unique_id=644550678 instance=ExtResource("11_efxa6")]
-position = Vector2(429, 314)
-
-[node name="coin4" parent="." unique_id=808427961 instance=ExtResource("11_efxa6")]
-position = Vector2(1520, 314)
-
-[node name="coin5" parent="." unique_id=763361847 instance=ExtResource("11_efxa6")]
-position = Vector2(2028, 314)
-
-[node name="coin6" parent="." unique_id=1236671666 instance=ExtResource("11_efxa6")]
-position = Vector2(1708, 559)
-
-[node name="coin7" parent="." unique_id=332162365 instance=ExtResource("11_efxa6")]
-position = Vector2(2214, 559)
-
-[node name="coin3" parent="." unique_id=718701138 instance=ExtResource("11_efxa6")]
-position = Vector2(1010, 314)
+[node name="bulletspawner" type="Node2D" parent="." unique_id=1125454308 groups=["BulletSpawner"]]
+script = ExtResource("1_4c57u")

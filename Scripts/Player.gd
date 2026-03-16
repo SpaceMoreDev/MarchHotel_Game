@@ -3,8 +3,9 @@ class_name Player
 
 @onready var Sprite : AnimatedSprite2D = $AnimatedSprite2D
 
-@onready var coin_text : Label = $CanvasLayer/Control/HBoxContainer/Label
-@onready var coin_icon : Control = $CanvasLayer/Control/HBoxContainer
+@onready var coin_text : Label = $UI/Control/HBoxContainer/Label
+@onready var coin_icon : Control = $UI/Control/HBoxContainer
+@onready var player_combat : PlayerCombat = $Combat
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -770.0
