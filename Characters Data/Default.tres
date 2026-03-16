@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Character_Data" format=3 uid="uid://cphfk52fufgnx"]
+
+[ext_resource type="Script" uid="uid://c16o2vrvldy04" path="res://Scripts/CharacterData.gd" id="1_7uxoy"]
+[ext_resource type="SpriteFrames" uid="uid://bcqqxasbvvvcr" path="res://Default_Character_frames.tres" id="1_h7a6g"]
+
+[resource]
+script = ExtResource("1_7uxoy")
+name = "Steve"
+frames = ExtResource("1_h7a6g")
+metadata/_custom_type_script = "uid://c16o2vrvldy04"

@@ -2,6 +2,9 @@ extends Node
 
 var player : Player
 var coins : int = 0
+var chosen_character_data : Character_Data
+
+signal OnCharacterSelection(activatedSlot : CharacterSlot)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,3 +42,7 @@ func add_coins_count(count:int):
 func Death():
 	coins = 0
 	get_tree().reload_current_scene()
+	
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().change_scene_to_file("res://CharacterSelect.tscn")

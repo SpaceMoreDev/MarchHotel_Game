@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://c6f07goqhwj0l"]
+
+[ext_resource type="Texture2D" uid="uid://cpui8nqvjr20e" path="res://Assets/Tiles/block_blue.png" id="1_5teog"]
+[ext_resource type="Script" uid="uid://cm2tp20p76mgn" path="res://Scripts/CharacterSelect_Slot.gd" id="2_nehd8"]
+[ext_resource type="Texture2D" uid="uid://hj4s1rl5ebwc" path="res://Assets/Character/character_yellow_walk_a.png" id="3_450kc"]
+[ext_resource type="Resource" uid="uid://dky1gkkms020g" path="res://Characters Data/Green.tres" id="3_nehd8"]
+[ext_resource type="Shader" uid="uid://cg4jw1v5hb310" path="res://Scripts/Shaders/WhiteSelection.gdshader" id="4_450kc"]
+[ext_resource type="Texture2D" uid="uid://becx50c5sfdrv" path="res://Assets/Character/character_yellow_walk_b.png" id="4_w3h81"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w3h81"]
+shader = ExtResource("4_450kc")
+shader_parameter/white_progress = 0.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7hob4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_450kc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_w3h81")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CharacterSlot" type="TextureRect" unique_id=1078575024]
+texture = ExtResource("1_5teog")
+script = ExtResource("2_nehd8")
+characteData = ExtResource("3_nehd8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1156704058]
+material = SubResource("ShaderMaterial_w3h81")
+position = Vector2(33, 24)
+scale = Vector2(0.5606094, 0.5606094)
+sprite_frames = SubResource("SpriteFrames_7hob4")
+frame = 1
+frame_progress = 0.08228628
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

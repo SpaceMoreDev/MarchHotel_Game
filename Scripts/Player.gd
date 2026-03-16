@@ -9,6 +9,10 @@ class_name Player
 const SPEED = 300.0
 const JUMP_VELOCITY = -770.0
 
+func _ready() -> void:
+	if Global.chosen_character_data:
+		Sprite.sprite_frames = Global.chosen_character_data.frames
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
