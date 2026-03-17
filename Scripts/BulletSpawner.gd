@@ -13,8 +13,10 @@ func _ready() -> void:
 	for i in POOL_SIZE:
 		var bullet : Bullet = bulletScene.instantiate()
 		bullet.visible = false
-		bullet.set_physics_process(false)
-		bullet.position = Vector2(99999,99999)
+		bullet.active = false
+		bullet.moving = false
+		#bullet.set_physics_process(false)
+		#bullet.position = Vector2(99999,99999)
 		add_child(bullet)
 		bullet_pool.append(bullet)
 
@@ -30,9 +32,10 @@ func spawn(direction:float , location:Vector2) -> void:
 	if spawned_bullet == null:
 		return
 	
-	spawned_bullet.position = location
+	spawned_bullet.global_position = location
 	spawned_bullet.visible = true
-	spawned_bullet.set_physics_process(true)
+	spawned_bullet.active = true
+	#spawned_bullet.set_physics_process(true)
 	spawned_bullet.shoot(direction)
 	
 

@@ -2,19 +2,27 @@ extends CharacterBody2D
 class_name Player
 
 @onready var Sprite : AnimatedSprite2D = $AnimatedSprite2D
-
 @onready var coin_text : Label = $UI/Control/HBoxContainer/Label
 @onready var coin_icon : Control = $UI/Control/HBoxContainer
 @onready var player_combat : PlayerCombat = $Combat
+@onready var camera : Camera2D = $Camera2D
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -770.0
+const SPEED = 330.0
+const JUMP_VELOCITY = -670.0
+
+var character_data : Character_Data
 
 func _ready() -> void:
+	Global.checkpoint_location = position
 	if Global.chosen_character_data:
-		Sprite.sprite_frames = Global.chosen_character_data.frames
+		set_character(Global.chosen_character_data)
 
-func _physics_process(delta: float) -> void:
+func set_character(data : Character_Data) -> void:
+	if data:
+		character_data = data
+		Sprite.sprite_frames = data.frames
+
+func _process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -36,14 +44,16 @@ func _physics_process(delta: float) -> void:
 		
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
+	
+	
 	if is_on_floor():
 		if velocity.length() > 0:
 			Sprite.play("Run")
 		else:
 			Sprite.play("Idle")
 	else:
-		Sprite.play("Jump")
+		if Sprite.is_playing():
+			Sprite.play("Jump")
 	
 	move_and_slide()
 	

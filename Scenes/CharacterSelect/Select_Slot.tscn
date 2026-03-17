@@ -26,14 +26,15 @@ animations = [{
 }]
 
 [node name="CharacterSlot" type="TextureRect" unique_id=1078575024]
+clip_contents = true
 texture = ExtResource("1_5teog")
 script = ExtResource("2_nehd8")
 characteData = ExtResource("3_nehd8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1156704058]
 material = SubResource("ShaderMaterial_w3h81")
-position = Vector2(33, 24)
-scale = Vector2(0.5606094, 0.5606094)
+position = Vector2(33, 30)
+scale = Vector2(0.43750003, 0.4375)
 sprite_frames = SubResource("SpriteFrames_7hob4")
 frame = 1
 frame_progress = 0.08228628

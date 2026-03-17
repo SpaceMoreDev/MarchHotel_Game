@@ -8,5 +8,6 @@ enum ABILITY
 }
 
 @export var name : String
+@export var creator : String
 @export var ability : ABILITY
 @export var frames : SpriteFrames

@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://cdtwcugq8jfl7"]
+
+[ext_resource type="Script" uid="uid://beyl80j1u464s" path="res://Scripts/CharacterSelectionScreen.gd" id="1_cke7i"]
+[ext_resource type="PackedScene" uid="uid://c6f07goqhwj0l" path="res://Scenes/CharacterSelect/Select_Slot.tscn" id="2_u2xlq"]
+[ext_resource type="Resource" uid="uid://cphfk52fufgnx" path="res://Characters Data/Default.tres" id="3_3v07y"]
+[ext_resource type="Resource" uid="uid://dqsu2fedqmii2" path="res://Characters Data/Cash.tres" id="4_u2xlq"]
+
+[node name="CharacterSelection" type="Control" unique_id=537147222]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -78.0
+offset_right = 20.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cke7i")
+
+[node name="character_name" type="Label" parent="." unique_id=772164572]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.0
+offset_top = -214.00003
+offset_right = 67.0
+offset_bottom = -150.00003
+grow_horizontal = 2
+theme_override_constants/outline_size = 21
+theme_override_font_sizes/font_size = 46
+text = "Select character!"
+horizontal_alignment = 1
+
+[node name="creator" type="Label" parent="." unique_id=970087368]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -184.5
+offset_top = -153.0
+offset_right = 184.5
+offset_bottom = -113.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.5996037, 0.5996037, 0.5996037, 1)
+theme_override_constants/outline_size = 11
+theme_override_font_sizes/font_size = 29
+horizontal_alignment = 1
+
+[node name="TextureRect" type="ColorRect" parent="." unique_id=1547311282]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -262.0
+offset_top = -131.00003
+offset_right = 48.72223
+offset_bottom = 106.99997
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.8747985, 1.8747985)
+color = Color(0.50980395, 0.5372549, 0.6901961, 0.56078434)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect" unique_id=574719926]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -100.0
+offset_right = 134.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/VBoxContainer" unique_id=77704965]
+layout_mode = 2
+
+[node name="TextureRect2" parent="TextureRect/VBoxContainer/HBoxContainer" unique_id=161550643 groups=["CharacterSelectionSlot"] instance=ExtResource("2_u2xlq")]
+layout_mode = 2
+characteData = ExtResource("3_3v07y")
+
+[node name="TextureRect" parent="TextureRect/VBoxContainer/HBoxContainer" unique_id=1078575024 groups=["CharacterSelectionSlot"] instance=ExtResource("2_u2xlq")]
+layout_mode = 2
+
+[node name="TextureRect3" parent="TextureRect/VBoxContainer/HBoxContainer" unique_id=530858002 groups=["CharacterSelectionSlot"] instance=ExtResource("2_u2xlq")]
+layout_mode = 2
+characteData = ExtResource("4_u2xlq")

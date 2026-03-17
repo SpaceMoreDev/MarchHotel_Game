@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("2_6qpme")
 name = "Green"
+creator = "Kenny"
 frames = ExtResource("1_w4eti")
 metadata/_custom_type_script = "uid://c16o2vrvldy04"
