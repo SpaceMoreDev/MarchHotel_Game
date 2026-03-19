@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dg7m6lve24ayr"]
+
+[ext_resource type="Script" uid="uid://byvi5y77fc7d0" path="res://Scripts/FishingCore.gd" id="1_1doho"]
+
+[node name="Node2D" type="Node2D" unique_id=482134791]
+
+[node name="Fishes" type="Node" parent="." unique_id=132757301]
+script = ExtResource("1_1doho")

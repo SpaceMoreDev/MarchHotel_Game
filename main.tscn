@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bn8g464ahdrpj" path="res://Scripts/BulletSpawner.gd" id="1_4c57u"]
 [ext_resource type="Texture2D" uid="uid://cnnd5ci7jjhwb" path="res://Assets/Backgrounds/background_solid_sky.png" id="1_kek77"]
+[ext_resource type="Texture2D" uid="uid://54katm374m7t" path="res://Assets/Backgrounds/bg_test.png" id="2_272bh"]
 [ext_resource type="PackedScene" uid="uid://bbon71wuwsej7" path="res://Scenes/player.tscn" id="5_272bh"]
 [ext_resource type="TileSet" uid="uid://dqv25wrpgfo3u" path="res://Assets/platforming_tile_set.tres" id="7_5vw27"]
-[ext_resource type="Texture2D" uid="uid://qlf0t67ff52d" path="res://Assets/Backgrounds/background_clouds.png" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://cdtwcugq8jfl7" path="res://Scenes/CharacterSelect/character_selection.tscn" id="9_4c57u"]
 [ext_resource type="PackedScene" uid="uid://mu46pjxa4p7e" path="res://Scenes/coin.tscn" id="11_efxa6"]
 
@@ -29,8 +29,7 @@ motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(768, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="map/ParallaxBackground/Background" unique_id=2082282407]
-scale = Vector2(3, 3)
-texture = ExtResource("8_5vw27")
+texture = ExtResource("2_272bh")
 centered = false
 
 [node name="coins" type="Node" parent="map" unique_id=1793187200]
