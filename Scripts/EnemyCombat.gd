@@ -1,0 +1,14 @@
+extends Combat
+class_name EnemyCombat
+
+var firing_actor : Node2D
+var bullet_spawner : BulletSpawner
+
+
+func _ready() -> void:
+	firing_actor = get_parent()
+	bullet_spawner = get_tree().get_first_node_in_group("BulletSpawner")
+	shoot.connect(bullet_spawner.spawn)
+
+func fire(dir) -> void:
+	shoot.emit(dir, firing_actor)

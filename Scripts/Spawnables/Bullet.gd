@@ -9,6 +9,7 @@ var speed = 700
 var moving = false
 var timer : Timer
 var hit = false
+var firing_actor
 
 func _ready() -> void:
 	timer = Timer.new()
@@ -17,9 +18,9 @@ func _ready() -> void:
 	add_child(timer)
 	pass
 
-func shoot(new_dir : float) -> void:
+func shoot(new_dir : float, _firing_actor) -> void:
 	timer.stop()
-	
+	firing_actor = _firing_actor
 	$Sprite2D.play("Idle")
 	
 	velocity = Vector2.RIGHT.rotated(new_dir)
@@ -41,8 +42,20 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	explode()
+	if not active:
+		return
+	if body is Bullet:
+		return
 		
+	if firing_actor:
+		if body == firing_actor:
+			return
+	if body is Character:
+		body.take_damage()
+	
+	
+	explode()
+
 func explode():
 	moving = false
 	timer.stop()

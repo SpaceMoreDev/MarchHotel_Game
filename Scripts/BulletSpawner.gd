@@ -1,15 +1,12 @@
 extends Node2D
+class_name BulletSpawner
 
-var player : Player
 var bulletScene = preload("res://Scenes/bullet.tscn")
 
 var bullet_pool : Array[Bullet] = []
-const POOL_SIZE := 20
+const POOL_SIZE := 100
 
 func _ready() -> void:
-	player = Global.get_player()
-	player.player_combat.shoot.connect(spawn)
-
 	for i in POOL_SIZE:
 		var bullet : Bullet = bulletScene.instantiate()
 		bullet.visible = false
@@ -26,17 +23,17 @@ func get_bullet() -> Bullet:
 			return bullet
 	return null
 	
-func spawn(direction:float , location:Vector2) -> void:
+func spawn(direction:float , target : Node2D) -> void:
 	var spawned_bullet := get_bullet()
 
 	if spawned_bullet == null:
 		return
 	
-	spawned_bullet.global_position = location
+	spawned_bullet.global_position = target.position
 	spawned_bullet.visible = true
 	spawned_bullet.active = true
 	#spawned_bullet.set_physics_process(true)
-	spawned_bullet.shoot(direction)
+	spawned_bullet.shoot(direction, target)
 	
 
 	

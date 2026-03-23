@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Character
 class_name Player
 
 @onready var Sprite : AnimatedSprite2D = $AnimatedSprite2D
@@ -11,6 +11,10 @@ const SPEED = 330.0
 const JUMP_VELOCITY = -670.0
 
 var character_data : Character_Data
+
+func take_damage():
+	super()
+	Global.OnLoseHeatlh.emit(1)
 
 func _ready() -> void:
 	Global.checkpoint_location = position

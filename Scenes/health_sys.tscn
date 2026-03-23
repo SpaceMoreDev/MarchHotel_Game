@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cca7wiftnrg8j"]
+
+[ext_resource type="Script" uid="uid://dvjapjvpi1uft" path="res://Scripts/Health.gd" id="1_3k2fa"]
+[ext_resource type="PackedScene" uid="uid://cglkq78v0bei5" path="res://Scenes/health_heart.tscn" id="2_1afue"]
+
+[node name="Health_sys" type="HBoxContainer" unique_id=1604869712]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 36.425
+offset_right = 100.0
+offset_bottom = 99.42505
+grow_horizontal = 2
+script = ExtResource("1_3k2fa")
+
+[node name="Health" parent="." unique_id=786600384 instance=ExtResource("2_1afue")]
+layout_mode = 2
+
+[node name="Health2" parent="." unique_id=341319644 instance=ExtResource("2_1afue")]
+layout_mode = 2
+
+[node name="Health3" parent="." unique_id=68273671 instance=ExtResource("2_1afue")]
+layout_mode = 2

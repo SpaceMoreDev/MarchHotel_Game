@@ -1,7 +1,20 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://dyt0dl3e6plwb"]
 
+[ext_resource type="Texture2D" uid="uid://cpu6gd4o02vj3" path="res://Assets/Animated Characters/Goblin/goblin_sheet_kick.png" id="1_5fw4k"]
 [ext_resource type="Texture2D" uid="uid://v87f1vt85alh" path="res://Assets/Animated Characters/Goblin/sprite_sheet_Goblin.png" id="1_rsbq2"]
 [ext_resource type="Texture2D" uid="uid://bkdbw4s4og3ht" path="res://Assets/Animated Characters/Goblin/sprite_sheet_Goblin_Idle.png" id="2_74ced"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulfq0"]
+atlas = ExtResource("1_5fw4k")
+region = Rect2(92, 0, 92, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k56d1"]
+atlas = ExtResource("1_5fw4k")
+region = Rect2(0, 128, 92, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrc33"]
+atlas = ExtResource("1_5fw4k")
+region = Rect2(92, 128, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_74ced"]
 atlas = ExtResource("1_rsbq2")
@@ -61,6 +74,20 @@ region = Rect2(184, 128, 92, 128)
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulfq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k56d1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrc33")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_74ced")

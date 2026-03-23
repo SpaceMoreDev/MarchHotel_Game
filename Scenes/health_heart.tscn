@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cglkq78v0bei5"]
+
+[ext_resource type="Texture2D" uid="uid://14grrdt1j4t" path="res://Assets/Tiles/heart.png" id="1_wx21i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6dqak"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wx21i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Health" type="Control" unique_id=786600384]
+custom_minimum_size = Vector2(64.245, 63.825)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Heart" type="AnimatedSprite2D" parent="." unique_id=1239625714]
+sprite_frames = SubResource("SpriteFrames_6dqak")
+centered = false

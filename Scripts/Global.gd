@@ -6,7 +6,11 @@ var checkpoint_location : Vector2
 
 signal OnCharacterSelection(activatedSlot : CharacterSlot)
 signal OnCharacterHover(slot : CharacterSlot)
+signal OnLoseHeatlh(amount : int)
+signal OnGainHeatlh(amount : int)
 
+func _ready() -> void:
+	get_tree().scene_changed.connect(onchangescene)
 
 func get_player() -> Player:
 	var player
@@ -26,6 +30,13 @@ func get_coin_UI_pos() -> Vector2:
 	var screen_pos = player.coin_icon.get_rect().position
 	var world_target = get_viewport().get_canvas_transform().affine_inverse() * screen_pos
 	return world_target
+
+func onchangescene():
+	var player = get_player()
+	
+	if not player:
+		return
+	player.coin_text.text = str(coins)
 
 func add_coins_count(count:int):
 	var player = get_player()
@@ -56,8 +67,15 @@ func set_player_data(data : Character_Data):
 	if player:
 		player.set_character(data)
 
+func go_to_hub():
+	get_tree().call_deferred("change_scene_to_file", "res://main.tscn")
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Debug_MiniA"):
 		get_tree().change_scene_to_file("res://Characters Data/minigame_A.tscn")
+	
 	if event.is_action_pressed("Debug_HUB"):
-		get_tree().change_scene_to_file("res://main.tscn")
+		go_to_hub()
+	
+	if event.is_action_pressed("Debug_backstreet"):
+		get_tree().change_scene_to_file("res://Scenes/backstreet.tscn")

@@ -1,5 +1,7 @@
 extends Node
 
+@export var health : Health
+
 var player : Player
 var coinScene = preload("res://Scenes/coin.tscn")
 
@@ -8,11 +10,12 @@ var spawn_points : Array[Vector2]
 var coin_pool : Array[Coin] = []
 var timer : Timer
 
-const POOL_SIZE := 10
 
+const POOL_SIZE := 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	player = Global.get_player()
 	if player:
 		player.camera.enabled = false
@@ -27,8 +30,8 @@ func _ready() -> void:
 		coin.visible = false
 		coin.active = false
 		coin.picked = false
-		#coin.set_physics_process(false)
-		
+		coin.monitoring = false
+
 		add_child(coin)
 		coin_pool.append(coin)
 	
@@ -45,6 +48,13 @@ func get_coin() -> Coin:
 			return coin
 	return null
 	
+func LoseHealth(amount):
+	if health:
+		health.remove_health(amount)
+
+func GainHealth(amount):
+	if health:
+		health.add_health(amount)
 
 func _timer_timeout():
 	var rand = spawn_points.pick_random()
@@ -62,12 +72,11 @@ func spawn(location:Vector2) -> void:
 	spawned_coin.visible = true
 	spawned_coin.picked = false
 	spawned_coin.active = false
-
+	
 	timer.stop()
 	await get_tree().create_timer(1).timeout
 	timer.start()
 	
 	spawned_coin.active = true
 	spawned_coin.throw()
-	
-	#spawned_coin.set_physics_process(true)
+	spawned_coin.monitoring = true
