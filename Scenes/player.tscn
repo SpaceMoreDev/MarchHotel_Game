@@ -8,18 +8,18 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
 size = Vector2(34, 71)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=375837386 groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=375837386 groups=["Player"]]
 z_index = 2
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_vgqql")
 
-[node name="Combat" type="Node" parent="." unique_id=497508985]
+[node name="Combat" type="Node2D" parent="." unique_id=712525200]
 script = ExtResource("2_fkybt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1863417199]
 sprite_frames = ExtResource("3_x3wgy")
-animation = &"Hit"
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=118375808]
 position = Vector2(0, 23.5)

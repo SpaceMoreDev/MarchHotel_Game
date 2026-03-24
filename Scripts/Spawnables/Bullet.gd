@@ -9,7 +9,7 @@ var speed = 700
 var moving = false
 var timer : Timer
 var hit = false
-var firing_actor
+var firing_actor : Variant
 
 func _ready() -> void:
 	timer = Timer.new()
@@ -38,20 +38,33 @@ func shoot(new_dir : float, _firing_actor) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if moving:
-		position += velocity * speed * delta
+		global_position += velocity * speed * delta
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if not active:
 		return
-	if body is Bullet:
-		return
 		
+	if not body is Character:
+		return
+
+	if (body as Character).dead:
+		return
+	
+	if firing_actor is Goblin:
+		if body is Goblin:
+			return
+	else:
+		if firing_actor is Player:
+			if body is Player:
+				return
+	
 	if firing_actor:
 		if body == firing_actor:
 			return
-	if body is Character:
-		body.take_damage()
+		
+		if body is Character:
+			body.take_damage(firing_actor)
 	
 	
 	explode()
@@ -67,6 +80,7 @@ func explode():
 	
 	#set_physics_process(false)
 	visible = false
-	#position = Vector2(99999,99999)	
+	firing_actor = null
+	global_position = Vector2(-200,-600)
 	
 	

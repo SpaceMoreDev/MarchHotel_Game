@@ -36,7 +36,7 @@ func onchangescene():
 	
 	if not player:
 		return
-	player.coin_text.text = str(coins)
+	(player as Player).coin_text.text = str(coins)
 
 func add_coins_count(count:int):
 	var player = get_player()

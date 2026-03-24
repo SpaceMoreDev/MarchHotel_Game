@@ -3,16 +3,20 @@
 [ext_resource type="Script" uid="uid://8jca3bp0dfvc" path="res://Scripts/coin_rain_minigame.gd" id="1_a842a"]
 [ext_resource type="TileSet" uid="uid://dqv25wrpgfo3u" path="res://Assets/platforming_tile_set.tres" id="1_g5u6o"]
 [ext_resource type="PackedScene" uid="uid://bbon71wuwsej7" path="res://Scenes/player.tscn" id="2_a842a"]
-[ext_resource type="Texture2D" uid="uid://6srel54u71h" path="res://Assets/Character/character_green_front.png" id="4_rddcn"]
+[ext_resource type="Texture2D" uid="uid://db80f542182fv" path="res://Assets/Animated Characters/Goblin/sprite_sheet_attack.png" id="4_kyuxn"]
 [ext_resource type="PackedScene" uid="uid://cca7wiftnrg8j" path="res://Scenes/health_sys.tscn" id="5_kyuxn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dqak"]
+atlas = ExtResource("4_kyuxn")
+region = Rect2(184, 128, 92, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kyuxn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_rddcn")
+"texture": SubResource("AtlasTexture_6dqak")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]

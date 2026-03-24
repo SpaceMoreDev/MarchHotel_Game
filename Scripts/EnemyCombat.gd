@@ -1,14 +1,15 @@
 extends Combat
 class_name EnemyCombat
 
-var firing_actor : Node2D
+var firing_actor : Goblin
 var bullet_spawner : BulletSpawner
 
 
 func _ready() -> void:
-	firing_actor = get_parent()
+	firing_actor = get_parent() as Goblin
 	bullet_spawner = get_tree().get_first_node_in_group("BulletSpawner")
 	shoot.connect(bullet_spawner.spawn)
 
 func fire(dir) -> void:
-	shoot.emit(dir, firing_actor)
+	if not firing_actor.dead:
+		shoot.emit(dir, firing_actor)

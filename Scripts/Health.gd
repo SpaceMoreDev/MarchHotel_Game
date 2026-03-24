@@ -22,7 +22,7 @@ func _ready() -> void:
 	Global.OnLoseHeatlh.connect(remove_health)
 	
 	for node in get_children():
-		print(node.name)
+		#print(node.name)
 		
 		var h = Heart.new()
 		h. valid = node.visible
@@ -34,9 +34,9 @@ func _ready() -> void:
 
 func remove_health(value : int = 1):
 	var new_hp = health_points - value
-	print('lost ' + str(health_points) + ' - ' + str(value) + ' = ' + str(new_hp))
+	#print('lost ' + str(health_points) + ' - ' + str(value) + ' = ' + str(new_hp))
 	health_points = clamp(new_hp, 0, hearts.size())
-	print("----> clamped hp: " + str(health_points))
+	#print("----> clamped hp: " + str(health_points))
 	var index = health_points
 	hearts[index].remove()
 	
@@ -44,13 +44,13 @@ func remove_health(value : int = 1):
 
 func add_health(value : int = 1):
 	var new_hp = health_points + value
-	print('gain ' + str(health_points) + ' + ' + str(value) + ' = ' + str(new_hp))
+	#print('gain ' + str(health_points) + ' + ' + str(value) + ' = ' + str(new_hp))
 	health_points = clamp(new_hp, 0, hearts.size())
-	print("----> clamped hp: " + str(health_points))
+	#print("----> clamped hp: " + str(health_points))
 	var index = health_points-1
 	hearts[index].add()
 
 func check_gameover(hp):
 	if hp <= 0:
-		print('game over')
+		#print('game over')
 		Global.go_to_hub()

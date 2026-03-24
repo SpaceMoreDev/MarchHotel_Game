@@ -1,12 +1,29 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://cov8f6wd48r0w"]
 
 [ext_resource type="Texture2D" uid="uid://cdccn68it5m5e" path="res://Assets/Animated Characters/Cash/sprite_sheet.png" id="1_1ihu4"]
+[ext_resource type="Texture2D" uid="uid://clp2qvlbdl2dj" path="res://Assets/Animated Characters/Cash/cash_sheet_knockback.png" id="1_8hvkq"]
 [ext_resource type="Texture2D" uid="uid://cgnwe1ev32nar" path="res://Assets/Animated Characters/Cash/sprite_sheet_3.png" id="2_2ja1h"]
 [ext_resource type="Texture2D" uid="uid://bhyjl5ky2ite4" path="res://Assets/Animated Characters/Cash/sprite_sheet_idle.png" id="2_ybqt6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ihu4"]
-atlas = ExtResource("1_1ihu4")
-region = Rect2(0, 0, 92, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_svnnl"]
+atlas = ExtResource("1_8hvkq")
+region = Rect2(92, 0, 92, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fniyi"]
+atlas = ExtResource("1_8hvkq")
+region = Rect2(184, 0, 92, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pphdy"]
+atlas = ExtResource("1_8hvkq")
+region = Rect2(0, 128, 92, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8k8sv"]
+atlas = ExtResource("1_8hvkq")
+region = Rect2(92, 128, 92, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u116"]
+atlas = ExtResource("1_8hvkq")
+region = Rect2(184, 128, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u81vf"]
 atlas = ExtResource("2_ybqt6")
@@ -64,11 +81,23 @@ region = Rect2(276, 128, 92, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1ihu4")
+"texture": SubResource("AtlasTexture_svnnl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fniyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pphdy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8k8sv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8u116")
 }],
-"loop": true,
+"loop": false,
 "name": &"Hit",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,

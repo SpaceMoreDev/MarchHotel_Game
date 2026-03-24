@@ -35,7 +35,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if picked:
 		return
 	
-	if not body.is_in_group("Player"):
+	if not body is Player:
 		return
 	
 	collect()
@@ -43,8 +43,8 @@ func _on_body_entered(body: Node2D) -> void:
 	var tween : Tween = create_tween()
 	tween.tween_property(self,"modulate",Color(1,1,1,0),.6).finished.connect(reset)
 
-	if player:
-		Global.add_coins_count(1)
+	Global.add_coins_count(1)
+	
 	picked = true
 	pass
 

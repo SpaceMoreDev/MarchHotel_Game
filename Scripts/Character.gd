@@ -1,5 +1,14 @@
 extends CharacterBody2D
 class_name Character
 
-func take_damage():
+signal OnDeath(node)
+var dead = false
+
+func death():
+	if not dead:
+		OnDeath.emit(self)
+		dead = true
+	#print("dead")
+
+func take_damage(attacker : Character):
 	pass

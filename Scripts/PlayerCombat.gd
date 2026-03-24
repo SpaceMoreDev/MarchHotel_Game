@@ -1,7 +1,7 @@
 extends Combat
 class_name PlayerCombat
 
-var player : Player
+var player : Character
 var bullet_spawner : BulletSpawner
 
 func _ready() -> void:

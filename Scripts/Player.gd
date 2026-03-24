@@ -11,9 +11,37 @@ const SPEED = 330.0
 const JUMP_VELOCITY = -670.0
 
 var character_data : Character_Data
+var is_taking_damage = false
 
-func take_damage():
-	super()
+func go_down():
+	$CollisionShape2D.disabled = true
+	await get_tree().create_timer(.1).timeout
+	$CollisionShape2D.disabled = false
+
+func take_damage(attacker : Character):
+	super(attacker)
+	
+	var attack_dir = (attacker.position - position).normalized()
+	
+	if sign(attack_dir.x) == 1: 
+			Sprite.flip_h = false
+	else:
+			Sprite.flip_h = true
+	
+	Sprite.play("Hit")
+	
+	is_taking_damage = true
+	
+	velocity.x = -attack_dir.x * 500
+	move_and_slide()
+	
+	await Sprite.animation_finished
+	#await get_tree().create_timer(.5).timeout
+	
+	is_taking_damage = false
+	
+	
+	
 	Global.OnLoseHeatlh.emit(1)
 
 func _ready() -> void:
@@ -30,17 +58,20 @@ func _process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+	if is_taking_damage:
+		return
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if (Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_up")) and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
+	
+	if Input.is_action_just_pressed("ui_down") and is_on_floor():
+		go_down()
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * SPEED
-		
 		if sign(direction) == 1: 
 			Sprite.flip_h = false
 		else:
