@@ -1,63 +1,73 @@
 extends Character
 class_name Goblin
 
-var SPEED = 100.0
+var SPEED = 8000.0
 var JUMP_VELOCITY = 670.0
 var random_speed_variation
 
 @export var goblin_combat : EnemyCombat
 @export var fire_interval : float = 0.5
+
 var groundY : int
 var player : Player
 var Sprite : AnimatedSprite2D
 
-var coin_spawner : Pool
+var active : bool = false
+var can_move : bool = true
+var is_shooting : bool = false
 
 
 func _ready() -> void:
 	player = Global.get_player()
 	Sprite = $AnimatedSprite2D
 
+
+# ========================
+# DAMAGE / DEATH
+# ========================
+
 func take_damage(attacker):
-	death()
-	dead = true
-	super(attacker)
-	Sprite.play("Hit")
-	await Sprite.animation_finished 
-	visible = false
-	is_shooting = false
-	in_combat = false
-	global_position = Vector2(-200,-600)
-	set_collision(false)
-	#set_physics_process(false)
+	if dead or not active:
+		return
 	
+	super(attacker)
+	active = false
+	Sprite.play("Hit")
+	await Sprite.animation_finished
+	call_deferred("death")
+
+
+func death():
+	super()
+	global_position = Vector2(700, -700)
+	active = false
+	visible = false
+	can_move = false
+	dead = true
+	call_deferred("set_collision", false)
+
 
 func set_collision(onoff : bool):
 	$CollisionShape2D.disabled = !onoff
 
-func go_down():
-	if dead:
-		return
-	
-	$CollisionShape2D.disabled = true
-	await get_tree().create_timer(.1).timeout
-	$CollisionShape2D.disabled = false
 
-var in_combat = false
-var is_shooting = false
+# ========================
+# COMBAT
+# ========================
 
 func attack():
-	if dead:
+	if dead or not active:
 		return
 	
-	in_combat = true
+	can_move = false
 	Sprite.play("Attack")
 	await Sprite.animation_finished
 	player.take_damage(self)
-	in_combat = false
+	can_move = true
+
 
 func shoot(fire_dir):
-	if dead:
+	if dead or not active:
 		return
 	
 	is_shooting = true
@@ -66,66 +76,116 @@ func shoot(fire_dir):
 	is_shooting = false
 	goblin_combat.fire(fire_dir)
 
-func _physics_process(delta: float) -> void:
-	if dead:
+
+# ========================
+# MOVEMENT HELPERS
+# ========================
+
+func go_down():
+	if dead or not active:
 		return
 	
-	# Add the gravity.
+	$CollisionShape2D.disabled = true
+	await get_tree().create_timer(0.1).timeout
+	$CollisionShape2D.disabled = false
+
+
+func apply_gravity(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	else:
 		groundY = int(global_position.y)
+
+
+func handle_vertical_movement():
+	if not is_on_floor():
+		return
 	
-	if is_on_floor():
-		if player.global_position.y < groundY - 100:
-			velocity.y = -JUMP_VELOCITY
-			
-		if player.global_position.y > groundY + 100:
-			go_down()
-		
+	if player.global_position.y < groundY - 100:
+		velocity.y = -JUMP_VELOCITY
+	
+	elif player.global_position.y > groundY + 100:
+		go_down()
+
+
+func handle_horizontal_movement(direction: Vector2, delta: float):
+	var distance = direction.length()
+
+	if distance > 500:
+		handle_far_behavior(direction)
+	elif distance > 70:
+		velocity.x = direction.normalized().x * SPEED * delta
+	else:
+		handle_close_behavior()
+
+
+func handle_far_behavior(direction: Vector2):
+	velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	var fire_dir = get_fire_direction(direction)
+
+	if not is_shooting and is_on_floor():
+		shoot(fire_dir)
+
+
+func handle_close_behavior():
+	velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	if is_on_floor() and is_zero_approx(velocity.length()) and can_move:
+		attack()
+
+
+func get_fire_direction(direction: Vector2) -> float:
+	if sign(direction.x) == 1:
+		Sprite.flip_h = false
+		return Vector2.RIGHT.angle()
+	else:
+		Sprite.flip_h = true
+		return Vector2.LEFT.angle()
+
+
+func handle_sprite_flip(direction: Vector2):
+	Sprite.flip_h = sign(direction.x) != 1
+
+
+# ========================
+# ANIMATION
+# ========================
+
+func update_animation():
+	if not is_on_floor():
+		Sprite.play("Jump")
+		return
+	
+	if not can_move or is_shooting:
+		return
+	
+	if abs(velocity.x) > 0:
+		Sprite.play("Run")
+	else:
+		Sprite.play("Idle")
+
+
+# ========================
+# PROCESS
+# ========================
+
+func _process(delta: float) -> void:
+	if global_position.y > 850:
+		death()
+
+
+func _physics_process(delta: float) -> void:
+	if dead or not active or not can_move:
+		return
+	
+	apply_gravity(delta)
+	handle_vertical_movement()
 	
 	var direction := player.global_position - global_position
 	
-	if sign(direction.x) == 1: 
-			Sprite.flip_h = false
-	else:
-			Sprite.flip_h = true
+	handle_sprite_flip(direction)
+	handle_horizontal_movement(direction, delta)
+	update_animation()
 	
-	
-	if direction.length() > 500: # too far away
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
-		var fire_dir = Vector2.LEFT.angle()
-		if sign(direction.x) == 1: 
-			fire_dir = Vector2.RIGHT.angle()
-		else:
-			Sprite.flip_h = Vector2.LEFT.angle()
-		
-		if not is_shooting:
-			shoot(fire_dir)
-	
-	
-	elif direction.length() > 70:
-		velocity.x = direction.normalized().x * SPEED * delta * 80
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED )
-		if is_on_floor():
-			if is_zero_approx(velocity.length()) && not in_combat:
-				attack()
-	
-	
-	if not is_on_floor():
-		if Sprite.is_playing():
-			Sprite.play("Jump")
-			in_combat = false
-		
-	else:
-		if not in_combat and not is_shooting:
-			if abs(velocity.x) > 0:
-				Sprite.play("Run")
-			else:
-				Sprite.play("Idle")
-			
-		
-	#print(str(velocity))
 	move_and_slide()

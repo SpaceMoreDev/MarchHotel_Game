@@ -7,6 +7,8 @@ class_name Player
 @onready var player_combat : PlayerCombat = $Combat
 @onready var camera : Camera2D = $Camera2D
 
+@export var can_die : bool = true
+
 const SPEED = 330.0
 const JUMP_VELOCITY = -670.0
 
@@ -19,6 +21,9 @@ func go_down():
 	$CollisionShape2D.disabled = false
 
 func take_damage(attacker : Character):
+	if not can_die:
+		return
+	
 	super(attacker)
 	
 	var attack_dir = (attacker.position - position).normalized()

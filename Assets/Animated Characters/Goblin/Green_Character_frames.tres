@@ -1,110 +1,114 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://dyt0dl3e6plwb"]
 
-[ext_resource type="Texture2D" uid="uid://cpu6gd4o02vj3" path="res://Assets/Animated Characters/Goblin/goblin_sheet_kick.png" id="1_5fw4k"]
-[ext_resource type="Texture2D" uid="uid://v87f1vt85alh" path="res://Assets/Animated Characters/Goblin/sprite_sheet_Goblin.png" id="1_rsbq2"]
-[ext_resource type="Texture2D" uid="uid://bkdbw4s4og3ht" path="res://Assets/Animated Characters/Goblin/sprite_sheet_Goblin_Idle.png" id="2_74ced"]
-[ext_resource type="Texture2D" uid="uid://db80f542182fv" path="res://Assets/Animated Characters/Goblin/sprite_sheet_attack.png" id="2_d7on6"]
-[ext_resource type="Texture2D" uid="uid://cupsi4bsc50iq" path="res://Assets/Animated Characters/Goblin/goblin_sheet_fade.png" id="2_iq14o"]
-[ext_resource type="Texture2D" uid="uid://bsypktxncw4f1" path="res://Assets/Animated Characters/Goblin/goblin_sheet_in_air.png" id="5_t4gc2"]
+[ext_resource type="Texture2D" uid="uid://cpu6gd4o02vj3" path="res://Assets/Animated Characters/Goblin/goblin_sheet_kick.png" id="1_hrtqa"]
+[ext_resource type="Texture2D" uid="uid://db80f542182fv" path="res://Assets/Animated Characters/Goblin/sprite_sheet_attack.png" id="2_xgwfl"]
+[ext_resource type="Texture2D" uid="uid://cupsi4bsc50iq" path="res://Assets/Animated Characters/Goblin/goblin_sheet_fade.png" id="3_se1cv"]
+[ext_resource type="Texture2D" uid="uid://bkdbw4s4og3ht" path="res://Assets/Animated Characters/Goblin/sprite_sheet_Goblin_Idle.png" id="4_1f1wo"]
+[ext_resource type="Texture2D" uid="uid://bsypktxncw4f1" path="res://Assets/Animated Characters/Goblin/goblin_sheet_in_air.png" id="5_1srb8"]
+[ext_resource type="Texture2D" uid="uid://v87f1vt85alh" path="res://Assets/Animated Characters/Goblin/sprite_sheet_Goblin.png" id="6_n0v11"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ulfq0"]
-atlas = ExtResource("1_5fw4k")
+atlas = ExtResource("1_hrtqa")
 region = Rect2(92, 0, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k56d1"]
-atlas = ExtResource("1_5fw4k")
+atlas = ExtResource("1_hrtqa")
 region = Rect2(0, 128, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mrc33"]
-atlas = ExtResource("1_5fw4k")
+atlas = ExtResource("1_hrtqa")
 region = Rect2(92, 128, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pfw6m"]
-atlas = ExtResource("2_d7on6")
+atlas = ExtResource("2_xgwfl")
 region = Rect2(184, 0, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_swykd"]
-atlas = ExtResource("2_iq14o")
+atlas = ExtResource("3_se1cv")
 region = Rect2(184, 0, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tikwj"]
-atlas = ExtResource("2_iq14o")
+atlas = ExtResource("3_se1cv")
 region = Rect2(276, 0, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b242b"]
-atlas = ExtResource("2_iq14o")
+atlas = ExtResource("3_se1cv")
 region = Rect2(0, 128, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tlkp2"]
-atlas = ExtResource("2_iq14o")
+atlas = ExtResource("3_se1cv")
 region = Rect2(92, 128, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_28wak"]
-atlas = ExtResource("2_iq14o")
+atlas = ExtResource("3_se1cv")
 region = Rect2(184, 128, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_igpif"]
-atlas = ExtResource("2_iq14o")
+atlas = ExtResource("3_se1cv")
 region = Rect2(276, 128, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7wiwv"]
-atlas = ExtResource("2_iq14o")
+atlas = ExtResource("3_se1cv")
 region = Rect2(0, 256, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k3k84"]
-atlas = ExtResource("2_iq14o")
+atlas = ExtResource("3_se1cv")
 region = Rect2(92, 256, 92, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3cpl"]
+atlas = ExtResource("3_se1cv")
+region = Rect2(184, 256, 92, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_5fw4k"]
-atlas = ExtResource("2_74ced")
+atlas = ExtResource("4_1f1wo")
 region = Rect2(0, 0, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xyap5"]
-atlas = ExtResource("2_74ced")
+atlas = ExtResource("4_1f1wo")
 region = Rect2(92, 0, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t0q3y"]
-atlas = ExtResource("2_74ced")
+atlas = ExtResource("4_1f1wo")
 region = Rect2(184, 0, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e3yat"]
-atlas = ExtResource("2_74ced")
+atlas = ExtResource("4_1f1wo")
 region = Rect2(0, 128, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yj40j"]
-atlas = ExtResource("2_74ced")
+atlas = ExtResource("4_1f1wo")
 region = Rect2(92, 128, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wq0oj"]
-atlas = ExtResource("5_t4gc2")
+atlas = ExtResource("5_1srb8")
 region = Rect2(184, 128, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d7on6"]
-atlas = ExtResource("1_rsbq2")
+atlas = ExtResource("6_n0v11")
 region = Rect2(0, 0, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t4gc2"]
-atlas = ExtResource("1_rsbq2")
+atlas = ExtResource("6_n0v11")
 region = Rect2(92, 0, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_15gos"]
-atlas = ExtResource("1_rsbq2")
+atlas = ExtResource("6_n0v11")
 region = Rect2(184, 0, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e6tln"]
-atlas = ExtResource("1_rsbq2")
+atlas = ExtResource("6_n0v11")
 region = Rect2(276, 0, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e27f8"]
-atlas = ExtResource("1_rsbq2")
+atlas = ExtResource("6_n0v11")
 region = Rect2(0, 128, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4qeq6"]
-atlas = ExtResource("1_rsbq2")
+atlas = ExtResource("6_n0v11")
 region = Rect2(92, 128, 92, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uwiva"]
-atlas = ExtResource("1_rsbq2")
+atlas = ExtResource("6_n0v11")
 region = Rect2(184, 128, 92, 128)
 
 [resource]
@@ -155,6 +159,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k3k84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3cpl")
 }],
 "loop": false,
 "name": &"Hit",

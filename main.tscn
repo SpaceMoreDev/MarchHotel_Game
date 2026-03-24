@@ -65,7 +65,7 @@ tile_set = ExtResource("7_5vw27")
 [node name="CharacterBody2D" parent="." unique_id=375837386 instance=ExtResource("5_272bh")]
 position = Vector2(693, 508)
 
-[node name="bulletspawner" type="Node2D" parent="." unique_id=1125454308 groups=["BulletSpawner"]]
+[node name="bulletspawner" type="Node2D" parent="." unique_id=1125454308 groups=["PlayerBulletSpawner"]]
 script = ExtResource("1_4c57u")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1923107672]

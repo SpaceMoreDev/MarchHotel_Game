@@ -9,7 +9,7 @@ var speed = 700
 var moving = false
 var timer : Timer
 var hit = false
-var firing_actor : Variant
+@export var firing_actor : Variant
 
 func _ready() -> void:
 	timer = Timer.new()
@@ -35,10 +35,11 @@ func shoot(new_dir : float, _firing_actor) -> void:
 
 	timer.start(3.0) # lifetime
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Called every frame. 'delta' is the elaaaaaaadfffdfpsed time since the previous frame.
 func _process(delta: float) -> void:
 	if moving:
-		global_position += velocity * speed * delta
+		if firing_actor:
+			global_position += velocity * speed * delta
 
 
 func _on_body_entered(body: Node2D) -> void:

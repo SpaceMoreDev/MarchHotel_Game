@@ -6,7 +6,7 @@ var bullet_spawner : BulletSpawner
 
 func _ready() -> void:
 	player = Global.get_player()
-	bullet_spawner = get_tree().get_first_node_in_group("BulletSpawner")
+	bullet_spawner = get_tree().get_first_node_in_group("PlayerBulletSpawner")
 	if bullet_spawner:
 		shoot.connect(bullet_spawner.spawn)
 

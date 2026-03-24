@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://to2fc2l8urgi" path="res://Scripts/goblin.gd" id="1_7w5cp"]
 [ext_resource type="Script" uid="uid://4iqa4b57migb" path="res://Scripts/EnemyCombat.gd" id="2_6n10i"]
-[ext_resource type="SpriteFrames" uid="uid://dyt0dl3e6plwb" path="res://Green_Character_frames.tres" id="3_gbw3e"]
+[ext_resource type="SpriteFrames" uid="uid://dyt0dl3e6plwb" path="res://Assets/Animated Characters/Goblin/Green_Character_frames.tres" id="3_gbw3e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
 size = Vector2(34, 71)
@@ -19,7 +19,7 @@ script = ExtResource("2_6n10i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=388673674]
 sprite_frames = ExtResource("3_gbw3e")
-animation = &"Jump"
+animation = &"Hit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2078132095]
 position = Vector2(0, 23.5)

@@ -9,6 +9,7 @@ func init_pool( _packed_scene : PackedScene, _pool_size = POOL_SIZE) -> Array[Va
 		if obj is Bullet:
 			obj.active = false
 			obj.moving = false
+			obj.global_position = Vector2(-200,-600)
 			obj.firing_actor = null
 	return object_pool
 
@@ -18,7 +19,7 @@ func _ready() -> void:
 func get_pool_instance() -> Variant:
 	for bullet in object_pool:
 		if bullet is Bullet:
-			if !bullet.active:
+			if not bullet.firing_actor:
 				return bullet
 	return null
 	
@@ -29,7 +30,7 @@ func spawn(direction:float , target : Node2D) -> void:
 
 	if spawned_bullet == null:
 		return
-	
+	spawned_bullet.firing_actor = target
 	spawned_bullet.active = true
 	spawned_bullet.shoot(direction, target)
 	

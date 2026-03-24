@@ -4,21 +4,31 @@ class_name GoblinSpawner
 var random_locations_to_spawn : Array[Node2D]
 var goblin_scene : PackedScene = preload("res://Scenes/goblin.tscn")
 @export var coin_pool : Pool
-@export var goblins_max = 3
+@export var goblins_max = 5
 @export var spawn_interval = 2.5
 
 var spawn_timer : Timer
 
 func init_pool( _packed_scene : PackedScene, _pool_size = POOL_SIZE) -> Array[Variant]:
-	super(_packed_scene, _pool_size)
-	for obj in object_pool:
-		if obj is Goblin:
-			obj.dead = true
-			obj.set_collision(false)
-			obj.call_deferred("reparent",get_parent())
-			
-			obj.OnDeath.connect(_on_spawned_goblin_death)
-	return object_pool
+	POOL_SIZE = _pool_size
+	
+	var pool_scene := _packed_scene
+	var pool_array  : Array[Goblin] = []
+	for i in POOL_SIZE:
+		var instance : Goblin = pool_scene.instantiate()
+		instance.visible = false
+		#instance.set_physics_process(false)
+		instance.dead = true
+		instance.active = false
+		instance.can_move = false
+		instance.global_position = Vector2(700,-700)
+		instance.set_collision(false)
+		get_parent().call_deferred("add_child",instance)
+		
+		instance.OnDeath.connect(_on_spawned_goblin_death)
+		pool_array.append(instance)
+	object_pool = pool_array
+	return pool_array
 
 func _on_spawned_goblin_death(node):
 	coin_pool.spawn_from_pool(node)
@@ -48,14 +58,14 @@ func _spawn_goblin():
 func get_pool_instance() -> Variant:
 	for goblin in object_pool:
 		if goblin is Goblin:
-			if goblin.dead:
+			if goblin.dead and not goblin.active:
 				return goblin
 	return null
 
 func get_goblins_in_scene() -> int:
 	var goblins_ct = 0
 	for goblin in object_pool:
-		if not goblin.dead:
+		if goblin.active:
 			goblins_ct+=1
 	
 	return goblins_ct
@@ -69,13 +79,18 @@ func spawn(direction:float , target : Node2D) -> void:
 	if spawned_obj == null:
 		return
 	
-	
 	var rand = RandomNumberGenerator.new()
-	spawned_obj.random_speed_variation = rand.randf_range(0,70)
+	spawned_obj.random_speed_variation = rand.randf_range(0,30)
 	spawned_obj.SPEED += spawned_obj.random_speed_variation
+	
 	spawned_obj.Sprite.play("Idle")
+	
 	spawned_obj.global_position = target.global_position
+	
 	spawned_obj.visible = true
 	spawned_obj.dead = false
+	spawned_obj.active = true
+	spawned_obj.can_move = true
+	
 	spawned_obj.set_collision(true)
 	
