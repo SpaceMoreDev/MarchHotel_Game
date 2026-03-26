@@ -8,6 +8,7 @@ class_name Player
 @onready var camera : Camera2D = $Camera2D
 
 @export var can_die : bool = true
+@export var active : bool = true
 
 const SPEED = 330.0
 const JUMP_VELOCITY = -670.0
@@ -50,6 +51,8 @@ func take_damage(attacker : Character):
 	Global.OnLoseHeatlh.emit(1)
 
 func _ready() -> void:
+	if not active:
+		camera.enabled =false
 	Global.checkpoint_location = position
 	if Global.chosen_character_data:
 		set_character(Global.chosen_character_data)
@@ -60,6 +63,9 @@ func set_character(data : Character_Data) -> void:
 		Sprite.sprite_frames = data.frames
 
 func _process(delta: float) -> void:
+	if not active:
+		return
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

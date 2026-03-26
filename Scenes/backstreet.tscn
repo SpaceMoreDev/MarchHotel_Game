@@ -45,6 +45,9 @@ tile_set = ExtResource("4_h5ffj")
 [node name="CharacterBody2D" parent="." unique_id=375837386 instance=ExtResource("5_ayeqa")]
 position = Vector2(693, 508)
 
+[node name="AnimatedSprite2D" parent="CharacterBody2D" index="1" unique_id=1863417199]
+animation = &"Hit"
+
 [node name="Camera2D" parent="CharacterBody2D" index="3" unique_id=1934535243]
 enabled = false
 

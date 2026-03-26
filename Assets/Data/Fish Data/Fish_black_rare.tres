@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Fish" format=3 uid="uid://bybb3emm52qld"]
+
+[ext_resource type="Texture2D" uid="uid://bmqtootdlwmev" path="res://Assets/Data/Fish Data/Frames/fishe.png" id="1_pbeh1"]
+[ext_resource type="Script" uid="uid://dbli5264cjr1e" path="res://Scripts/Fish.gd" id="2_xwxd4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xwxd4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pbeh1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_xwxd4")
+name = "Black Fish"
+creator = "@khashab"
+rarity = 1
+value = 50.0
+frames = SubResource("SpriteFrames_xwxd4")
+metadata/_custom_type_script = "uid://dbli5264cjr1e"

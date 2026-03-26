@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://5w4qwde6rakd"]
+
+[ext_resource type="Texture2D" uid="uid://ddupl6ps1qul5" path="res://Assets/Tiles/bomb.png" id="1_jg3am"]
+[ext_resource type="Shader" uid="uid://biq5o1tbk70ih" path="res://QTE_bar.gdshader" id="1_x0e2n"]
+[ext_resource type="Script" uid="uid://d0jgwlk7rcue0" path="res://Scripts/QTE_bar.gd" id="1_yiuk1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jg3am"]
+shader = ExtResource("1_x0e2n")
+shader_parameter/cursor_pos = 0.0
+shader_parameter/cursor_width = 0.005
+shader_parameter/success_range = Vector2(0.4, 0.6)
+shader_parameter/bar_color = Color(0.1200512, 0.12005127, 0.12005126, 1)
+shader_parameter/success_color = Color(0.2, 0.8, 0.2, 1)
+shader_parameter/cursor_color = Color(1, 1, 1, 1)
+
+[node name="QTE_BAR" type="Control" unique_id=2099905745 node_paths=PackedStringArray("label", "progress_bar")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -536.0
+offset_bottom = -284.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yiuk1")
+label = NodePath("Label")
+progress_bar = NodePath("TextureProgressBar")
+
+[node name="Label" type="Label" parent="." unique_id=1439339353]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -31.0
+offset_right = 20.0
+offset_bottom = -8.0
+grow_horizontal = 2
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1408448681]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -90.0
+offset_right = 20.0
+offset_bottom = -50.0
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1475945714]
+layout_mode = 2
+texture = ExtResource("1_jg3am")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer" unique_id=205975531]
+layout_mode = 2
+texture = ExtResource("1_jg3am")
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer" unique_id=533413320]
+layout_mode = 2
+texture = ExtResource("1_jg3am")
+
+[node name="TextureProgressBar" type="ProgressBar" parent="." unique_id=1687941169]
+material = SubResource("ShaderMaterial_jg3am")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.0
+offset_top = -18.0
+offset_right = 141.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+show_percentage = false

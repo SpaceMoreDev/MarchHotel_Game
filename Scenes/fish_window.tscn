@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://me8v4yq3xdif"]
+
+[ext_resource type="Script" uid="uid://c0gfowfkvruds" path="res://Scripts/fish_window.gd" id="1_bbdfd"]
+[ext_resource type="Texture2D" uid="uid://cfmk3m0ceh2sx" path="res://Assets/Data/Fish Data/Frames/old_fish.png" id="1_rsvr1"]
+[ext_resource type="Texture2D" uid="uid://xerbsa2napt0" path="res://Assets/Tiles/coin_gold.png" id="3_tcwun"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bbdfd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rsvr1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Control" type="Control" unique_id=114173059 node_paths=PackedStringArray("fish_sprite", "fish_name", "fish_creator", "fish_value")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bbdfd")
+fish_sprite = NodePath("ColorRect/fish/AnimatedSprite2D")
+fish_name = NodePath("ColorRect/fish/Label")
+fish_creator = NodePath("ColorRect/fish/Label/Label")
+fish_value = NodePath("ColorRect/fish/HBoxContainer/Label3")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1738519225]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.70297
+offset_top = -165.5
+offset_right = 175.703
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.070701115, 0.17326114, 0.12537408, 0.9411765)
+
+[node name="fish" type="Control" parent="ColorRect" unique_id=182052483]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect/fish" unique_id=655032556]
+position = Vector2(17, 40)
+scale = Vector2(0.18, 0.18000002)
+sprite_frames = SubResource("SpriteFrames_bbdfd")
+
+[node name="Label2" type="Label" parent="ColorRect/fish" unique_id=1499144054]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -78.0
+offset_top = -127.0
+offset_right = 76.0
+offset_bottom = -104.0
+grow_horizontal = 2
+text = "YOU GOT"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label" type="Label" parent="ColorRect/fish" unique_id=1065529177]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -77.0
+offset_top = -103.0
+offset_right = 77.0
+offset_bottom = -54.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "OLD FISH"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label" type="Label" parent="ColorRect/fish/Label" unique_id=1307486323]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = 2.5
+offset_right = 77.0
+offset_bottom = 51.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "by @spacezehuman"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/fish" unique_id=896953009]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -33.0
+offset_top = 71.750015
+offset_right = 58.0
+offset_bottom = 135.75002
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.685, 0.685)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/fish/HBoxContainer" unique_id=457835280]
+layout_mode = 2
+texture = ExtResource("3_tcwun")
+
+[node name="Label3" type="Label" parent="ColorRect/fish/HBoxContainer" unique_id=18620389]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "5"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="ColorRect" unique_id=999453627]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -36.5
+offset_right = 42.0
+offset_bottom = -5.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "OK"
+
+[connection signal="gui_input" from="ColorRect/Button" to="." method="_on_button_gui_input"]

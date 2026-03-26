@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Character_Data" format=3 uid="uid://dky1gkkms020g"]
+
+[ext_resource type="SpriteFrames" uid="uid://dyt0dl3e6plwb" path="res://Assets/Animated Characters/Goblin/Green_Character_frames.tres" id="1_w4eti"]
+[ext_resource type="Script" uid="uid://c16o2vrvldy04" path="res://Scripts/CharacterData.gd" id="2_6qpme"]
+
+[resource]
+script = ExtResource("2_6qpme")
+name = "Green"
+creator = "Kenny"
+frames = ExtResource("1_w4eti")
+metadata/_custom_type_script = "uid://c16o2vrvldy04"

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Fish" format=3 uid="uid://hj6lfqyk6flg"]
+
+[ext_resource type="Texture2D" uid="uid://cim6hikqi6510" path="res://Assets/Data/Fish Data/Frames/tuna.png" id="1_kb41b"]
+[ext_resource type="Script" uid="uid://dbli5264cjr1e" path="res://Scripts/Fish.gd" id="1_yst48"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_naeba"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kb41b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_yst48")
+name = "Empty Tuna"
+creator = "@khashab"
+value = 0.0
+frames = SubResource("SpriteFrames_naeba")
+metadata/_custom_type_script = "uid://dbli5264cjr1e"

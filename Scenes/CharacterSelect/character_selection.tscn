@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://beyl80j1u464s" path="res://Scripts/CharacterSelectionScreen.gd" id="1_cke7i"]
 [ext_resource type="PackedScene" uid="uid://c6f07goqhwj0l" path="res://Scenes/CharacterSelect/Select_Slot.tscn" id="2_u2xlq"]
-[ext_resource type="Resource" uid="uid://cphfk52fufgnx" path="res://Characters Data/Default.tres" id="3_3v07y"]
-[ext_resource type="Resource" uid="uid://dqsu2fedqmii2" path="res://Characters Data/Cash.tres" id="4_u2xlq"]
+[ext_resource type="Resource" uid="uid://cphfk52fufgnx" path="res://Assets/Data/Characters Data/Default.tres" id="3_3v07y"]
+[ext_resource type="Resource" uid="uid://dqsu2fedqmii2" path="res://Assets/Data/Characters Data/Cash.tres" id="4_u2xlq"]
 
 [node name="CharacterSelection" type="Control" unique_id=537147222]
 layout_mode = 3

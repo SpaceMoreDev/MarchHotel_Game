@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Fish" format=3 uid="uid://ggjka2bm53i8"]
+
+[ext_resource type="Texture2D" uid="uid://cfmk3m0ceh2sx" path="res://Assets/Data/Fish Data/Frames/old_fish.png" id="1_d67q6"]
+[ext_resource type="Script" uid="uid://dbli5264cjr1e" path="res://Scripts/Fish.gd" id="2_2sucu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_naeba"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d67q6")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_2sucu")
+name = "Old Fish"
+creator = "@spacezehuman"
+value = 5.0
+frames = SubResource("SpriteFrames_naeba")
+metadata/_custom_type_script = "uid://dbli5264cjr1e"

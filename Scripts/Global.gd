@@ -1,8 +1,8 @@
 extends Node
 var coins : int = 0
 var chosen_character_data : Character_Data
-
 var checkpoint_location : Vector2
+var collected_fishes : Array[Fish]
 
 signal OnCharacterSelection(activatedSlot : CharacterSlot)
 signal OnCharacterHover(slot : CharacterSlot)
@@ -72,10 +72,10 @@ func go_to_hub():
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Debug_MiniA"):
-		get_tree().change_scene_to_file("res://Characters Data/minigame_A.tscn")
-	
+		get_tree().change_scene_to_file("res://Scenes/minigame_A.tscn")
 	if event.is_action_pressed("Debug_HUB"):
 		go_to_hub()
-	
+	if event.is_action_pressed("Debug_fishing"):
+		get_tree().change_scene_to_file("res://Scenes/minigameB_fishing.tscn")
 	if event.is_action_pressed("Debug_backstreet"):
 		get_tree().change_scene_to_file("res://Scenes/backstreet.tscn")
