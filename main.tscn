@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cnnd5ci7jjhwb" path="res://Assets/Backgrounds/background_solid_sky.png" id="1_kek77"]
 [ext_resource type="Texture2D" uid="uid://54katm374m7t" path="res://Assets/Backgrounds/bg_test.png" id="2_272bh"]
 [ext_resource type="PackedScene" uid="uid://bbon71wuwsej7" path="res://Scenes/player.tscn" id="5_272bh"]
+[ext_resource type="Resource" uid="uid://dqsu2fedqmii2" path="res://Assets/Data/Characters Data/Cash.tres" id="6_efxa6"]
 [ext_resource type="TileSet" uid="uid://dqv25wrpgfo3u" path="res://Assets/platforming_tile_set.tres" id="7_5vw27"]
 [ext_resource type="PackedScene" uid="uid://rmglkbtig7s3" path="res://Scenes/door.tscn" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://cdtwcugq8jfl7" path="res://Scenes/CharacterSelect/character_selection.tscn" id="9_4c57u"]
@@ -52,6 +53,7 @@ tile_set = ExtResource("7_5vw27")
 
 [node name="CharacterBody2D" parent="." unique_id=375837386 instance=ExtResource("5_272bh")]
 position = Vector2(693, 508)
+character_data = ExtResource("6_efxa6")
 
 [node name="bulletspawner" type="Node2D" parent="." unique_id=1125454308 groups=["PlayerBulletSpawner"]]
 script = ExtResource("1_4c57u")

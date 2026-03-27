@@ -117,7 +117,7 @@ scale = Vector2(0.29204428, 0.2920443)
 texture = ExtResource("2_ycag2")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=635349488]
-z_index = 1
+z_index = 11
 sprite_frames = SubResource("SpriteFrames_qvo6q")
 animation = &"Idle"
 

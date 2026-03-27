@@ -14,8 +14,9 @@ const SPEED = 330.0
 const JUMP_VELOCITY = -670.0
 
 var is_knockback = false
-var character_data : Character_Data
+@export var character_data : Character_Data
 var is_taking_damage = false
+var is_attacking = false
 
 func go_down():
 	$CollisionShape2D.disabled = true
@@ -56,7 +57,9 @@ func _ready() -> void:
 	Global.checkpoint_location = position
 	if Global.chosen_character_data:
 		set_character(Global.chosen_character_data)
-
+	elif character_data:
+		set_character(character_data)
+		Global.chosen_character_data = character_data
 func set_character(data : Character_Data) -> void:
 	if data:
 		character_data = data
@@ -95,6 +98,7 @@ func _process(delta: float) -> void:
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * SPEED
+		is_attacking = false
 		if sign(direction) == 1: 
 			Sprite.flip_h = false
 		else:
@@ -103,15 +107,15 @@ func _process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
-	
-	if is_on_floor():
-		if velocity.length() > 0:
-			Sprite.play("Run")
+	if not is_attacking:
+		if is_on_floor():
+			if velocity.length() > 0:
+				Sprite.play("Run")
+			else:
+				Sprite.play("Idle")
 		else:
-			Sprite.play("Idle")
-	else:
-		if Sprite.is_playing():
-			Sprite.play("Jump")
+			if Sprite.is_playing():
+				Sprite.play("Jump")
 	
 	move_and_slide()
 	

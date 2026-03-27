@@ -10,6 +10,14 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_xjybe")
+}],
+"loop": true,
+"name": &"Cast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("1_02wtp")
 }],
 "loop": false,

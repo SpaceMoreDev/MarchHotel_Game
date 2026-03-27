@@ -40,6 +40,9 @@ func _process(delta: float) -> void:
 		if firing_actor:
 			global_position += velocity * speed * delta
 
+func change_sprite(new_sprite : SpriteFrames):
+	$Sprite2D.sprite_frames = new_sprite
+
 
 func _on_body_entered(body: Node2D) -> void:
 	if not active:

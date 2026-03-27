@@ -74,10 +74,11 @@ func shoot(fire_dir):
 	is_shooting = true
 	#active = false
 	Sprite.play("Cast")
+	goblin_combat.fire(fire_dir)
 	await get_tree().create_timer(fire_interval).timeout
 	is_shooting = false
 	#active = true
-	goblin_combat.fire(fire_dir)
+	
 
 
 # ========================

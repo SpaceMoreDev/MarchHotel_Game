@@ -5,6 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://cgnwe1ev32nar" path="res://Assets/Animated Characters/Cash/sprite_sheet_3.png" id="2_2ja1h"]
 [ext_resource type="Texture2D" uid="uid://bhyjl5ky2ite4" path="res://Assets/Animated Characters/Cash/sprite_sheet_idle.png" id="2_ybqt6"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tppwe"]
+atlas = ExtResource("2_ybqt6")
+region = Rect2(276, 0, 92, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_svnnl"]
 atlas = ExtResource("1_8hvkq")
 region = Rect2(92, 0, 92, 128)
@@ -79,6 +83,14 @@ region = Rect2(276, 128, 92, 128)
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tppwe")
+}],
+"loop": true,
+"name": &"Cast",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_svnnl")

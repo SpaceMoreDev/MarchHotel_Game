@@ -1,7 +1,7 @@
 extends Combat
 class_name PlayerCombat
 
-var player : Character
+var player : Player
 var bullet_spawner : BulletSpawner
 
 func _ready() -> void:
@@ -10,8 +10,17 @@ func _ready() -> void:
 	if bullet_spawner:
 		shoot.connect(bullet_spawner.spawn)
 
+func _reset_attack():
+	player.is_attacking = true
+	await get_tree().create_timer(.7).timeout
+	player.is_attacking = false
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Attack"):
+		
+		player.Sprite.play("Cast")
+		if not player.is_attacking:
+			_reset_attack()
 		
 		var dir = 0
 		if player.Sprite.flip_h:

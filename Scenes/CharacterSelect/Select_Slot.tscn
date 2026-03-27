@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cpui8nqvjr20e" path="res://Assets/Tiles/block_blue.png" id="1_5teog"]
 [ext_resource type="Script" uid="uid://cm2tp20p76mgn" path="res://Scripts/CharacterSelect_Slot.gd" id="2_nehd8"]
 [ext_resource type="Texture2D" uid="uid://hj4s1rl5ebwc" path="res://Assets/Character/character_yellow_walk_a.png" id="3_450kc"]
-[ext_resource type="Resource" uid="uid://dky1gkkms020g" path="res://Assets/Data/Characters Data/Green.tres" id="3_nehd8"]
+[ext_resource type="Resource" uid="uid://dky1gkkms020g" path="res://Assets/Data/Characters Data/Goblin.tres" id="3_nehd8"]
 [ext_resource type="Shader" uid="uid://cg4jw1v5hb310" path="res://Scripts/Shaders/WhiteSelection.gdshader" id="4_450kc"]
 [ext_resource type="Texture2D" uid="uid://becx50c5sfdrv" path="res://Assets/Character/character_yellow_walk_b.png" id="4_w3h81"]
 

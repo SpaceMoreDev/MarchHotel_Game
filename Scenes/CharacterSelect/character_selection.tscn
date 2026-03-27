@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c6f07goqhwj0l" path="res://Scenes/CharacterSelect/Select_Slot.tscn" id="2_u2xlq"]
 [ext_resource type="Resource" uid="uid://cphfk52fufgnx" path="res://Assets/Data/Characters Data/Default.tres" id="3_3v07y"]
 [ext_resource type="Resource" uid="uid://dqsu2fedqmii2" path="res://Assets/Data/Characters Data/Cash.tres" id="4_u2xlq"]
+[ext_resource type="Resource" uid="uid://taxrfumr1mao" path="res://Assets/Data/Characters Data/GIGA.tres" id="5_3v07y"]
 
 [node name="CharacterSelection" type="Control" unique_id=537147222]
 layout_mode = 3
@@ -94,3 +95,7 @@ layout_mode = 2
 [node name="TextureRect3" parent="TextureRect/VBoxContainer/HBoxContainer" unique_id=530858002 groups=["CharacterSelectionSlot"] instance=ExtResource("2_u2xlq")]
 layout_mode = 2
 characteData = ExtResource("4_u2xlq")
+
+[node name="TextureRect4" parent="TextureRect/VBoxContainer/HBoxContainer" unique_id=1466816311 groups=["CharacterSelectionSlot"] instance=ExtResource("2_u2xlq")]
+layout_mode = 2
+characteData = ExtResource("5_3v07y")

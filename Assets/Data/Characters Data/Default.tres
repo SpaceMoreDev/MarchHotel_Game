@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" uid="uid://c16o2vrvldy04" path="res://Scripts/CharacterData.gd" id="1_7uxoy"]
 [ext_resource type="SpriteFrames" uid="uid://bcqqxasbvvvcr" path="res://Default_Character_frames.tres" id="1_h7a6g"]
+[ext_resource type="SpriteFrames" uid="uid://b54cun3h4aphd" path="res://Assets/barrel_sprite_frames.tres" id="2_y4nr4"]
 
 [resource]
 script = ExtResource("1_7uxoy")
-name = "Steve"
+name = "Some guy"
 creator = "Kenny"
 frames = ExtResource("1_h7a6g")
+projectile_frames = ExtResource("2_y4nr4")
 metadata/_custom_type_script = "uid://c16o2vrvldy04"

@@ -1,0 +1,72 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://df4t12f5a2nrf"]
+
+[ext_resource type="Texture2D" uid="uid://ckio24juvebkg" path="res://Assets/Animated Characters/Giga/projectile_sheet_star.png" id="1_6aypq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h51um"]
+atlas = ExtResource("1_6aypq")
+region = Rect2(15, 0, 69, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_627en"]
+atlas = ExtResource("1_6aypq")
+region = Rect2(84, 0, 69, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pa3a"]
+atlas = ExtResource("1_6aypq")
+region = Rect2(153, 0, 69, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5o5l"]
+atlas = ExtResource("1_6aypq")
+region = Rect2(222, 0, 69, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usblv"]
+atlas = ExtResource("1_6aypq")
+region = Rect2(15, 120, 69, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgbhj"]
+atlas = ExtResource("1_6aypq")
+region = Rect2(84, 120, 69, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kt48x"]
+atlas = ExtResource("1_6aypq")
+region = Rect2(153, 120, 69, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlhew"]
+atlas = ExtResource("1_6aypq")
+region = Rect2(222, 120, 69, 120)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h51um")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_627en")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pa3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5o5l")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usblv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgbhj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kt48x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlhew")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 10.0
+}]

@@ -11,3 +11,4 @@ enum ABILITY
 @export var creator : String
 @export var ability : ABILITY
 @export var frames : SpriteFrames
+@export var projectile_frames : SpriteFrames

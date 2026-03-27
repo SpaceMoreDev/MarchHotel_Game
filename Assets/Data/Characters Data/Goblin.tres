@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Character_Data" format=3 uid="uid://dky1gkkms020g"]
+
+[ext_resource type="SpriteFrames" uid="uid://pmt8jlcmkyjk" path="res://Assets/Animated Characters/Goblin/Goblin_Character_frames.tres" id="1_shx4j"]
+[ext_resource type="SpriteFrames" uid="uid://b54cun3h4aphd" path="res://Assets/barrel_sprite_frames.tres" id="2_y20ey"]
+[ext_resource type="Script" uid="uid://c16o2vrvldy04" path="res://Scripts/CharacterData.gd" id="3_hjn77"]
+
+[resource]
+script = ExtResource("3_hjn77")
+name = "The Goblin"
+creator = "@spacezehuman and @khashab"
+frames = ExtResource("1_shx4j")
+projectile_frames = ExtResource("2_y20ey")
+metadata/_custom_type_script = "uid://c16o2vrvldy04"

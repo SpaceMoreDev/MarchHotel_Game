@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Character_Data" format=3 uid="uid://taxrfumr1mao"]
+
+[ext_resource type="SpriteFrames" uid="uid://bb0d0sx6dl616" path="res://Assets/Animated Characters/Giga/Giga_Frames.tres" id="1_231ah"]
+[ext_resource type="Script" uid="uid://c16o2vrvldy04" path="res://Scripts/CharacterData.gd" id="2_033mb"]
+[ext_resource type="SpriteFrames" uid="uid://df4t12f5a2nrf" path="res://Assets/Animated Characters/Giga/star_sprite_frames.tres" id="2_ic8jd"]
+
+[resource]
+script = ExtResource("2_033mb")
+name = "GIGANTOMECHA"
+creator = "@makia2593"
+frames = ExtResource("1_231ah")
+projectile_frames = ExtResource("2_ic8jd")
+metadata/_custom_type_script = "uid://c16o2vrvldy04"

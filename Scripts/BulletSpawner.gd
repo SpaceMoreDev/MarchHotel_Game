@@ -32,6 +32,10 @@ func spawn(direction:float , target : Node2D) -> void:
 		return
 	spawned_bullet.firing_actor = target
 	spawned_bullet.active = true
+	if target is Player:
+		if target.character_data:
+			if target.character_data.projectile_frames:
+				spawned_bullet.change_sprite(target.character_data.projectile_frames)
 	spawned_bullet.shoot(direction, target)
 	
 
