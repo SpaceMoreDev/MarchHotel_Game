@@ -1,5 +1,7 @@
 extends Control
 
+class_name CharacterSelect
+
 var slots : Array
 var chosen_character_slot : CharacterSlot
 var cstween : Tween
@@ -39,10 +41,16 @@ func activate():
 func deactivate():
 	create_tween().tween_property(self, "global_position", Vector2(555,925),.2)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("CharacterSelect"):
-		flipflop = !flipflop
-		if flipflop:
-			activate()
-		else:
-			deactivate()
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("CharacterSelect"):
+		#flipflop = !flipflop
+		#if flipflop:
+			#activate()
+		#else:
+			#deactivate()
+
+
+func _on_button_button_down() -> void:
+	deactivate()
+	Global.get_player().self_active = true
+	$TextureRect/Button.focus_mode = 0

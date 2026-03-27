@@ -11,6 +11,48 @@
 [ext_resource type="PackedScene" uid="uid://dg7m6lve24ayr" path="res://Scenes/minigameB_fishing.tscn" id="11_dg77c"]
 [ext_resource type="PackedScene" uid="uid://mu46pjxa4p7e" path="res://Scenes/coin.tscn" id="11_efxa6"]
 [ext_resource type="PackedScene" uid="uid://cnnt1oe0ql2bk" path="res://Scenes/backstreet.tscn" id="12_dg77c"]
+[ext_resource type="Script" uid="uid://befw3w5j7t2ya" path="res://Scripts/cs_machine.gd" id="12_w48qg"]
+[ext_resource type="Texture2D" uid="uid://ucmht5wjw20p" path="res://Assets/CS_Machine.png" id="12_ycdy4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dg77c"]
+radius = 195.1815
+
+[sub_resource type="Animation" id="Animation_kek77"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("msg:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4c57u"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("msg:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ycdy4"]
+_data = {
+&"RESET": SubResource("Animation_kek77"),
+&"fade_in": SubResource("Animation_4c57u")
+}
 
 [node name="Main" type="Node2D" unique_id=881412835]
 
@@ -60,7 +102,7 @@ script = ExtResource("1_4c57u")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1923107672]
 
-[node name="CharacterSelection" parent="CanvasLayer" unique_id=537147222 instance=ExtResource("9_4c57u")]
+[node name="CharacterSelection" parent="CanvasLayer" unique_id=537147222 groups=["CharacterSelect_Menu"] instance=ExtResource("9_4c57u")]
 offset_top = 601.0
 offset_bottom = 641.0
 
@@ -77,3 +119,79 @@ scene_to_transition_to = ExtResource("12_dg77c")
 position = Vector2(2666, 636)
 message = "Try fishing! click on the bubbles with the mouse, once clicked you have to successed the quick time event. this one has no end."
 scene_to_transition_to = ExtResource("11_dg77c")
+
+[node name="CS_Machine" type="Area2D" parent="." unique_id=958671564]
+position = Vector2(825.9999, 680)
+scale = Vector2(0.51999754, 0.51999754)
+collision_mask = 2
+script = ExtResource("12_w48qg")
+
+[node name="msg" type="Control" parent="CS_Machine" unique_id=2071566279]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -19.230625
+offset_top = -240.38574
+offset_right = 20.769375
+offset_bottom = -200.38574
+scale = Vector2(2.13, 2.13)
+
+[node name="Label" type="Label" parent="CS_Machine/msg" unique_id=2027881195]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -11.5
+offset_right = 32.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.31500003)
+theme_override_constants/shadow_offset_x = -5
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 37
+text = "PRESS 'E'"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CS_Machine/msg" unique_id=1968947221]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -221.0
+offset_top = -73.30884
+offset_right = 221.0
+offset_bottom = -22.308834
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.34833792, 0.55080736, 0.5954776, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.31500003)
+theme_override_constants/shadow_offset_x = -5
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 23
+text = "Select a character"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="CsMachine" type="Sprite2D" parent="CS_Machine" unique_id=1775342432]
+z_index = 1
+scale = Vector2(1.0000001, 1.0000001)
+texture = ExtResource("12_ycdy4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CS_Machine" unique_id=1893689988]
+scale = Vector2(1.0000002, 1.0000002)
+shape = SubResource("CircleShape2D_dg77c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CS_Machine" unique_id=1971787724]
+libraries/ = SubResource("AnimationLibrary_ycdy4")
+
+[connection signal="body_entered" from="CS_Machine" to="CS_Machine" method="_on_body_entered"]
+[connection signal="body_exited" from="CS_Machine" to="CS_Machine" method="_on_body_exited"]

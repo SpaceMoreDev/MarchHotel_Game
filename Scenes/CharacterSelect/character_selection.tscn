@@ -99,3 +99,21 @@ characteData = ExtResource("4_u2xlq")
 [node name="TextureRect4" parent="TextureRect/VBoxContainer/HBoxContainer" unique_id=1466816311 groups=["CharacterSelectionSlot"] instance=ExtResource("2_u2xlq")]
 layout_mode = 2
 characteData = ExtResource("5_3v07y")
+
+[node name="Button" type="Button" parent="TextureRect" unique_id=1152192243]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.537262
+offset_top = -26.243912
+offset_right = 36.537262
+offset_bottom = -4.9082794
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 11
+text = "CLOSE"
+
+[connection signal="button_down" from="TextureRect/Button" to="." method="_on_button_button_down"]
