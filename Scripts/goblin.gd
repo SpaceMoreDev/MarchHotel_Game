@@ -6,18 +6,18 @@ var JUMP_VELOCITY = 670.0
 var random_speed_variation
 
 @export var goblin_combat : EnemyCombat
-@export var fire_interval : float = 0.5
+@export var fire_interval : float = 1.5
 
 var groundY : int
 var player : Player
 var Sprite : AnimatedSprite2D
 
-var active : bool = false
 var can_move : bool = true
 var is_shooting : bool = false
 
 
 func _ready() -> void:
+	active = false
 	player = Global.get_player()
 	Sprite = $AnimatedSprite2D
 
@@ -62,7 +62,8 @@ func attack():
 	can_move = false
 	Sprite.play("Attack")
 	await Sprite.animation_finished
-	player.take_damage(self)
+	if active:
+		player.take_damage(self,100)
 	can_move = true
 
 
@@ -71,9 +72,11 @@ func shoot(fire_dir):
 		return
 	
 	is_shooting = true
+	#active = false
 	Sprite.play("Cast")
 	await get_tree().create_timer(fire_interval).timeout
 	is_shooting = false
+	#active = true
 	goblin_combat.fire(fire_dir)
 
 
@@ -120,6 +123,9 @@ func handle_horizontal_movement(direction: Vector2, delta: float):
 
 
 func handle_far_behavior(direction: Vector2):
+	if dead or not active:
+		return
+	
 	velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	var fire_dir = get_fire_direction(direction)
@@ -129,6 +135,9 @@ func handle_far_behavior(direction: Vector2):
 
 
 func handle_close_behavior():
+	if dead or not active or is_shooting:
+		return
+	
 	velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	if is_on_floor() and is_zero_approx(velocity.length()) and can_move:
@@ -153,11 +162,14 @@ func handle_sprite_flip(direction: Vector2):
 # ========================
 
 func update_animation():
+	if is_shooting:
+		return
+	
 	if not is_on_floor():
 		Sprite.play("Jump")
 		return
 	
-	if not can_move or is_shooting:
+	if not can_move:
 		return
 	
 	if abs(velocity.x) > 0:

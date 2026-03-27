@@ -121,6 +121,6 @@ libraries/ = SubResource("AnimationLibrary_52oks")
 
 [node name="Player" parent="." unique_id=375837386 instance=ExtResource("9_o8kjn")]
 position = Vector2(98, 528)
-active = false
+self_active = false
 
 [connection signal="input_event" from="Fishing/bubbles/Area2D" to="Fishing" method="_on_area_2d_input_event"]

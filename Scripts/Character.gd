@@ -3,6 +3,7 @@ class_name Character
 
 signal OnDeath(node)
 var dead = false
+var active = true
 
 func death():
 	if not dead:

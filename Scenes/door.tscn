@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://rmglkbtig7s3"]
+
+[ext_resource type="Script" uid="uid://bcqa48r0uylua" path="res://scene_transitioner.gd" id="1_fahql"]
+[ext_resource type="PackedScene" uid="uid://bgu7js4ued0bg" path="res://Scenes/minigame_A.tscn" id="2_ab4ky"]
+[ext_resource type="Texture2D" uid="uid://bkafc4y5atrv0" path="res://icon.svg" id="3_a43ba"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kek77"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_a43ba")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
+size = Vector2(238, 218)
+
+[sub_resource type="Animation" id="Animation_kek77"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("msg:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4c57u"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("msg:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_efxa6"]
+_data = {
+&"RESET": SubResource("Animation_kek77"),
+&"fade_in": SubResource("Animation_4c57u")
+}
+
+[node name="Area2D" type="Area2D" unique_id=375871244 node_paths=PackedStringArray("msg_label")]
+collision_mask = 2
+script = ExtResource("1_fahql")
+msg_label = NodePath("msg/Label2")
+scene_to_transition_to = ExtResource("2_ab4ky")
+
+[node name="msg" type="Control" parent="." unique_id=745734010]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_top = -189.0
+offset_right = 40.0
+offset_bottom = -149.0
+
+[node name="Label" type="Label" parent="msg" unique_id=581790469]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -11.5
+offset_right = 32.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.31500003)
+theme_override_constants/shadow_offset_x = -5
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 37
+text = "PRESS 'E' TO ENTER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="msg" unique_id=659651970]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -155.0
+offset_right = 204.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.42814112, 0.6967854, 0.41387287, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.31500003)
+theme_override_constants/shadow_offset_x = -5
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 21
+text = "to play this game
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=445750071]
+scale = Vector2(1.84375, 1.84375)
+sprite_frames = SubResource("SpriteFrames_kek77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1527602362]
+shape = SubResource("RectangleShape2D_4c57u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1900412720]
+libraries/ = SubResource("AnimationLibrary_efxa6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

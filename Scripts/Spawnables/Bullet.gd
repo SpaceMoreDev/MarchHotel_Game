@@ -35,7 +35,6 @@ func shoot(new_dir : float, _firing_actor) -> void:
 
 	timer.start(3.0) # lifetime
 
-# Called every frame. 'delta' is the elaaaaaaadfffdfpsed time since the previous frame.
 func _process(delta: float) -> void:
 	if moving:
 		if firing_actor:

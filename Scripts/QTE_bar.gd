@@ -5,7 +5,7 @@ signal OnSuccess()
 signal OnFail()
 
 var t := 0.0
-var speed := 1.5
+var speed := 1.2
 var direction := 1
 var success_range := Vector2(0.4, 0.6)
 var active : bool = false

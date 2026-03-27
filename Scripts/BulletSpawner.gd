@@ -1,7 +1,7 @@
 extends Pool
 class_name BulletSpawner
 
-var bulletScene = preload("res://Scenes/bullet.tscn")
+@export var bulletScene : PackedScene = preload("res://Scenes/bullet.tscn")
 
 func init_pool( _packed_scene : PackedScene, _pool_size = POOL_SIZE) -> Array[Variant]:
 	super(_packed_scene, _pool_size)

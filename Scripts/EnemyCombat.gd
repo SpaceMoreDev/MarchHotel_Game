@@ -11,5 +11,5 @@ func _ready() -> void:
 	shoot.connect(bullet_spawner.spawn)
 
 func fire(dir) -> void:
-	if not firing_actor.dead:
+	if not firing_actor.dead or firing_actor.active:
 		shoot.emit(dir, firing_actor)

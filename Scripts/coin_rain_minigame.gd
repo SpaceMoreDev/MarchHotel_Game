@@ -1,11 +1,13 @@
 extends Node
 
+@export var mocking_bird : AnimatedSprite2D
+
 @export var health : Health
 
 var player : Player
 var coinScene = preload("res://Scenes/coin.tscn")
 
-var spawn_points : Array[Vector2]
+var spawn_points : Array[AnimatedSprite2D]
 
 var coin_pool : Array[Coin] = []
 var timer : Timer
@@ -13,16 +15,22 @@ var timer : Timer
 
 const POOL_SIZE := 10
 
+func _mocking_bird():
+	mocking_bird.play("laugh")
+	await mocking_bird.animation_finished
+	mocking_bird.play("idle")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	Global.OnLoseHeatlh.connect(LoseHealth)
 	player = Global.get_player()
 	if player:
 		player.camera.enabled = false
 	
 	for child in get_children():
-		if child is Node2D:
-			spawn_points.append(child.position)
+		if child is AnimatedSprite2D:
+			child.play("idle")
+			spawn_points.append(child)
 	
 	
 	for i in POOL_SIZE:
@@ -49,26 +57,27 @@ func get_coin() -> Coin:
 	return null
 	
 func LoseHealth(amount):
-	if health:
-		health.remove_health(amount)
+	_mocking_bird()
 
 func GainHealth(amount):
 	if health:
 		health.add_health(amount)
 
 func _timer_timeout():
-	var rand = spawn_points.pick_random()
-	spawn(rand)
-	#print("spawned coin")
+	if not spawn_points.is_empty():
+		var rand = spawn_points.pick_random()
+		rand.play("throw") 
+		spawn(rand)
+		#print("spawned coin")
 
-func spawn(location:Vector2) -> void:
+func spawn(goblin) -> void:
 	var spawned_coin := get_coin()
 
 	if spawned_coin == null:
 		return
 		
 	
-	spawned_coin.global_position = location
+	spawned_coin.global_position = goblin.global_position
 	spawned_coin.visible = true
 	spawned_coin.picked = false
 	spawned_coin.active = false
@@ -76,7 +85,7 @@ func spawn(location:Vector2) -> void:
 	timer.stop()
 	await get_tree().create_timer(1).timeout
 	timer.start()
-	
+	goblin.play("idle")
 	spawned_coin.active = true
 	spawned_coin.throw()
 	spawned_coin.monitoring = true

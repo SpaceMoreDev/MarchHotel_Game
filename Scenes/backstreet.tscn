@@ -1,15 +1,97 @@
 [gd_scene format=4 uid="uid://cnnt1oe0ql2bk"]
 
 [ext_resource type="Texture2D" uid="uid://cnnd5ci7jjhwb" path="res://Assets/Backgrounds/background_solid_sky.png" id="1_di2c5"]
+[ext_resource type="Script" uid="uid://djr8kow0ahvm5" path="res://Scripts/hand_push.gd" id="1_h5ffj"]
 [ext_resource type="Script" uid="uid://407hq4qujdpy" path="res://Scripts/Spawnables/goblin_spawner.gd" id="1_uuoj1"]
+[ext_resource type="Texture2D" uid="uid://bsedjvthnpcvf" path="res://Assets/goblin_hand.png" id="1_wdmao"]
 [ext_resource type="Texture2D" uid="uid://54katm374m7t" path="res://Assets/Backgrounds/bg_test.png" id="2_uuoj1"]
 [ext_resource type="TileSet" uid="uid://dqv25wrpgfo3u" path="res://Assets/platforming_tile_set.tres" id="4_h5ffj"]
 [ext_resource type="PackedScene" uid="uid://bbon71wuwsej7" path="res://Scenes/player.tscn" id="5_ayeqa"]
 [ext_resource type="Script" uid="uid://bn8g464ahdrpj" path="res://Scripts/BulletSpawner.gd" id="6_7lm1j"]
 [ext_resource type="Script" uid="uid://dcmclwyv6uqt1" path="res://Scripts/PickableCoinSpawner.gd" id="9_wdmao"]
+[ext_resource type="PackedScene" uid="uid://b3j8t1fymm45i" path="res://Scenes/bullet_barrel.tscn" id="10_7lm1j"]
 [ext_resource type="PackedScene" uid="uid://cca7wiftnrg8j" path="res://Scenes/health_sys.tscn" id="10_ayeqa"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayeqa"]
+size = Vector2(63.372, 350.038)
+
+[sub_resource type="Animation" id="Animation_h5ffj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wdmao"]
+resource_name = "hand_push"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.23333333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(313, 0), Vector2(313, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h5ffj"]
+_data = {
+&"RESET": SubResource("Animation_h5ffj"),
+&"hand_push": SubResource("Animation_wdmao")
+}
+
 [node name="Backstreet" type="Node2D" unique_id=1401873132]
+
+[node name="hand" type="Area2D" parent="." unique_id=1499038714]
+position = Vector2(-100.00001, 636.00006)
+scale = Vector2(0.655, 0.655)
+collision_mask = 3
+script = ExtResource("1_h5ffj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hand" unique_id=1322737616]
+position = Vector2(173.634, 0.97320557)
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_ayeqa")
+
+[node name="GoblinHand" type="Sprite2D" parent="hand" unique_id=216034597]
+z_index = 1
+texture = ExtResource("1_wdmao")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="hand" unique_id=1812159491]
+root_node = NodePath("../GoblinHand")
+libraries/ = SubResource("AnimationLibrary_h5ffj")
+
+[node name="hand2" type="Area2D" parent="." unique_id=605148384]
+position = Vector2(1296.035, 636)
+scale = Vector2(-0.655, 0.655)
+collision_mask = 3
+script = ExtResource("1_h5ffj")
+direction = Vector2(-1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hand2" unique_id=1133375259]
+position = Vector2(173.634, 0.97320557)
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_ayeqa")
+
+[node name="GoblinHand" type="Sprite2D" parent="hand2" unique_id=2034727831]
+z_index = 1
+texture = ExtResource("1_wdmao")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="hand2" unique_id=40607994]
+root_node = NodePath("../GoblinHand")
+libraries/ = SubResource("AnimationLibrary_h5ffj")
 
 [node name="map" type="Node" parent="." unique_id=180096535]
 
@@ -39,7 +121,7 @@ centered = false
 
 [node name="TileMapLayer" type="TileMapLayer" parent="map/tilemaps" unique_id=524531766]
 position = Vector2(622, 296)
-tile_map_data = PackedByteArray("AAD1/wcAAAAEAAAAAAD2/wcAAAAHAAAAAAD3/wcAAAAHAAAAAAD4/wcAAAAHAAAAAAD5/wcAAAAHAAAAAAD6/wcAAAAHAAAAAAD7/wcAAAAHAAAAAAD8/wcAAAAHAAAAAAD9/wcAAAAHAAAAAAD+/wcAAAAHAAAAAAD//wcAAAAHAAAAAAAAAAcAAAAHAAAAAAABAAcAAAAHAAAAAAACAAcAAAAHAAAAAAADAAcAAAAHAAAAAAAEAAcAAAAHAAAAAAAEAAgAAAABAAAAAAADAAgAAAABAAAAAAACAAgAAAABAAAAAAABAAgAAAABAAAAAAAAAAgAAAABAAAAAAD//wgAAAABAAAAAAD+/wgAAAABAAAAAAD9/wgAAAABAAAAAAD8/wgAAAABAAAAAAD7/wgAAAABAAAAAAD6/wgAAAABAAAAAAD5/wgAAAABAAAAAAD4/wgAAAABAAAAAAD3/wgAAAABAAAAAAD2/wgAAAABAAAAAAD1/wgAAAABAAAAAAD1/wYAAAAEAAAAAAD1/wUAAAAEAAAAAAD1/wQAAAAEAAAAAAD1/wMAAAAEAAAAAAD1/wIAAAAEAAAAAAD1/wEAAAAEAAAAAAD1/wAAAAAEAAAAAAD1////AAAEAAAAAAD1//7/AAAEAAAAAAD1//3/AAAEAAAAAAD1//z/AAAEAAAAAAD1//v/AAAEAAAAAAD1//r/AAAEAAAAAAD1//n/AAAEAAAAAAD1//j/AAAEAAAAAAD1//f/AAAEAAAAAAD1/+H/AAAEAAAAAAD1//b/AAAEAAAAAAD1//X/AAAEAAAAAAD1//T/AAAEAAAAAAD1//P/AAAEAAAAAAD1//H/AAAEAAAAAAD1//L/AAAEAAAAAAD1/+b/AAAEAAAAAAD1/+X/AAAEAAAAAAD1/+T/AAAEAAAAAAD1/+P/AAAEAAAAAAD1/+f/AAAEAAAAAAD1/+j/AAAEAAAAAAD1/+n/AAAEAAAAAAD1/+r/AAAEAAAAAAD1/+v/AAAEAAAAAAD1/+z/AAAEAAAAAAD1/+3/AAAEAAAAAAD1/+7/AAAEAAAAAAD1/+//AAAEAAAAAAD1//D/AAAEAAAAAAD1/+L/AAAEAAAAAAD1/+D/AAAEAAAAAAD1/9//AAAEAAAAAAD1/97/AAAEAAAAAAD1/93/AAAEAAAAAAD1/9z/AAAEAAAA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")
+tile_map_data = PackedByteArray("AAD1/wcAAgAAAAAAAAD2/wcAAgAAAAAAAAD3/wcAAgAAAAAAAAD4/wcAAgAAAAAAAAD5/wcAAgAAAAAAAAD6/wcAAgAAAAAAAAD7/wcAAgAAAAAAAAD8/wcAAgAAAAAAAAD9/wcAAgAAAAAAAAD+/wcAAgAAAAAAAAD//wcAAgAAAAAAAAAAAAcAAgAAAAAAAAABAAcAAgAAAAAAAAACAAcAAgAAAAAAAAADAAcAAgAAAAAAAAAEAAcAAgAAAAAAAAAEAAgAAgAAAAAAAAADAAgAAgAAAAAAAAACAAgAAgAAAAAAAAABAAgAAgAAAAAAAAAAAAgAAgAAAAAAAAD//wgAAgAAAAAAAAD+/wgAAgAAAAAAAAD9/wgAAgAAAAAAAAD8/wgAAgAAAAAAAAD7/wgAAgAAAAAAAAD6/wgAAgAAAAAAAAD5/wgAAgAAAAAAAAD4/wgAAgAAAAAAAAD3/wgAAgAAAAAAAAD2/wgAAgAAAAAAAAD1/wgAAgAAAAAAAAD1/wYAAAAEAAAAAAD1/wUAAAAEAAAAAAD1/wQAAAAEAAAAAAD1/wMAAAAEAAAAAAD1/wIAAAAEAAAAAAD1/wEAAAAEAAAAAAD1/wAAAAAEAAAAAAD1////AAAEAAAAAAD1//7/AAAEAAAAAAD1//3/AAAEAAAAAAD1//z/AAAEAAAAAAD1//v/AAAEAAAAAAAFAAcAAgAAAAAAAAAFAAgAAgAAAAAAAAAGAAcAAgAAAAAAAAAGAAgAAgAAAAAAAAAHAAcAAgAAAAAAAAAHAAgAAgAAAAAAAAAIAAcAAgAAAAAAAAAIAAgAAgAAAAAAAAAJAAEAAAAFAAAAAAAJAAcAAgAAAAAAAAAJAAgAAgAAAAAAAAAKAAcAAgAAAAAAAAAKAAgAAgAAAAAAAAAJAPv/AAAFAAAAAAAJAPz/AAAFAAAAAAAJAP3/AAAFAAAAAAAJAP7/AAAFAAAAAAAJAP//AAAFAAAAAAAJAAAAAAAFAAAAAAAJAAIAAAAFAAAAAAAJAAMAAAAFAAAAAAAJAAQAAAAFAAAAAAAJAAUAAAAFAAAAAAAJAAYAAAAFAAAAAAD8/wQABQAAAAAAAAD9/wQABQAAAAAAAAD+/wQABQAAAAAAAAD//wQABQAAAAAAAAAAAAQABQAAAAAAAAABAAQABQAAAAAAAAD3/wIAAwAAAAAAAAD4/wIABQAAAAAAAAD5/wIABQAAAAAAAAD6/wIABAAAAAAAAAAEAAIAAwAAAAAAAAAFAAIABQAAAAAAAAAGAAIABQAAAAAAAAAHAAIABAAAAAAAAAACAAQABQAAAAAAAAADAAQABQAAAAAAAAAEAAQABAAAAAAAAAD6/wQAAwAAAAAAAAD7/wQABQAAAAAAAAD0/wcAAgAAAAAAAAD0/wgAAgAAAAAAAAA=")
 tile_set = ExtResource("4_h5ffj")
 
 [node name="CharacterBody2D" parent="." unique_id=375837386 instance=ExtResource("5_ayeqa")]
@@ -51,8 +133,12 @@ animation = &"Hit"
 [node name="Camera2D" parent="CharacterBody2D" index="3" unique_id=1934535243]
 enabled = false
 
-[node name="Camera2D2" type="Camera2D" parent="CharacterBody2D" unique_id=1476501221]
-position = Vector2(17, -102)
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1300595236]
+
+[node name="Health_sys" parent="CanvasLayer" unique_id=1604869712 instance=ExtResource("10_ayeqa")]
+
+[node name="Camera2D2" type="Camera2D" parent="." unique_id=1476501221]
+position = Vector2(598, 448)
 limit_left = 0
 limit_top = 0
 limit_right = 1200
@@ -61,10 +147,6 @@ limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1300595236]
-
-[node name="Health_sys" parent="CanvasLayer" unique_id=1604869712 instance=ExtResource("10_ayeqa")]
 
 [node name="GoblinSpawner" type="Node2D" parent="." unique_id=671027792 node_paths=PackedStringArray("coin_pool")]
 position = Vector2(733, -318)
@@ -91,11 +173,15 @@ position = Vector2(322, 0)
 
 [node name="Bulletspawner" type="Node2D" parent="." unique_id=1966154506 groups=["BulletSpawner"]]
 script = ExtResource("6_7lm1j")
+bulletScene = ExtResource("10_7lm1j")
 
 [node name="PlayerBulletspawner" type="Node2D" parent="." unique_id=1167689232 groups=["PlayerBulletSpawner"]]
 script = ExtResource("6_7lm1j")
 
 [node name="CoinSpawner" type="Node2D" parent="." unique_id=1106900517]
 script = ExtResource("9_wdmao")
+
+[connection signal="body_entered" from="hand" to="hand" method="_on_body_entered"]
+[connection signal="body_entered" from="hand2" to="hand2" method="_on_body_entered"]
 
 [editable path="CharacterBody2D"]

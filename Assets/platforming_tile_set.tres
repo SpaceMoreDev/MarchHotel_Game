@@ -1,6 +1,10 @@
 [gd_resource type="TileSet" format=3 uid="uid://dqv25wrpgfo3u"]
 
 [ext_resource type="Texture2D" uid="uid://sjy4hyvuarro" path="res://Assets/Dirt_Tiles.png" id="1_cqbd4"]
+[ext_resource type="Texture2D" uid="uid://bj2l88w5edgni" path="res://Assets/tile.png" id="2_x25tj"]
+[ext_resource type="Texture2D" uid="uid://brb2d2uypjcy5" path="res://Assets/tile_l.png" id="3_837ah"]
+[ext_resource type="Texture2D" uid="uid://dxic4u6vanqtc" path="res://Assets/tile_r.png" id="4_yj8ub"]
+[ext_resource type="Texture2D" uid="uid://dubqyau5km1wn" path="res://Assets/tile_m.png" id="5_yj8ub"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_cqbd4"]
 tile_data = PackedInt32Array(0, 65536, 2, 1, 0, 2, 2, 0, 2, 3, 131072, 2)
@@ -73,8 +77,39 @@ texture_region_size = Vector2i(64, 64)
 6:3/0 = 0
 7:3/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sbjpa"]
+texture = ExtResource("2_x25tj")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 32, -32, -32, 32, -32, 32, 32)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sfykg"]
+texture = ExtResource("3_837ah")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:0/0/physics_layer_0/polygon_0/one_way = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6epkf"]
+texture = ExtResource("4_yj8ub")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:0/0/physics_layer_0/polygon_0/one_way = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2qssb"]
+texture = ExtResource("5_yj8ub")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:0/0/physics_layer_0/polygon_0/one_way = true
+
 [resource]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_272bh")
+sources/2 = SubResource("TileSetAtlasSource_sbjpa")
+sources/3 = SubResource("TileSetAtlasSource_sfykg")
+sources/4 = SubResource("TileSetAtlasSource_6epkf")
+sources/5 = SubResource("TileSetAtlasSource_2qssb")
 pattern_0 = SubResource("TileMapPattern_cqbd4")

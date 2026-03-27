@@ -73,7 +73,7 @@ func go_to_hub():
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Debug_MiniA"):
 		get_tree().change_scene_to_file("res://Scenes/minigame_A.tscn")
-	if event.is_action_pressed("Debug_HUB"):
+	if event.is_action_pressed("Leave"):
 		go_to_hub()
 	if event.is_action_pressed("Debug_fishing"):
 		get_tree().change_scene_to_file("res://Scenes/minigameB_fishing.tscn")

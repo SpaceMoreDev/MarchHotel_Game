@@ -8,11 +8,12 @@ class_name Player
 @onready var camera : Camera2D = $Camera2D
 
 @export var can_die : bool = true
-@export var active : bool = true
+@export var self_active : bool = true
 
 const SPEED = 330.0
 const JUMP_VELOCITY = -670.0
 
+var is_knockback = false
 var character_data : Character_Data
 var is_taking_damage = false
 
@@ -21,10 +22,9 @@ func go_down():
 	await get_tree().create_timer(.1).timeout
 	$CollisionShape2D.disabled = false
 
-func take_damage(attacker : Character):
+func take_damage(attacker : Character, force : float = 500):
 	if not can_die:
 		return
-	
 	super(attacker)
 	
 	var attack_dir = (attacker.position - position).normalized()
@@ -38,7 +38,7 @@ func take_damage(attacker : Character):
 	
 	is_taking_damage = true
 	
-	velocity.x = -attack_dir.x * 500
+	velocity.x = -attack_dir.x * force
 	move_and_slide()
 	
 	await Sprite.animation_finished
@@ -51,7 +51,7 @@ func take_damage(attacker : Character):
 	Global.OnLoseHeatlh.emit(1)
 
 func _ready() -> void:
-	if not active:
+	if not self_active:
 		camera.enabled =false
 	Global.checkpoint_location = position
 	if Global.chosen_character_data:
@@ -62,15 +62,27 @@ func set_character(data : Character_Data) -> void:
 		character_data = data
 		Sprite.sprite_frames = data.frames
 
+
+func apply_force(dir: Vector2, force: float):
+	velocity = dir.normalized() * force
+	is_knockback = true
+	
+	await get_tree().create_timer(0.2).timeout
+	is_knockback = false
+
+
 func _process(delta: float) -> void:
-	if not active:
+	if not self_active:
 		return
 	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	if is_taking_damage:
+	
+	if is_taking_damage or is_knockback:
+		move_and_slide()
 		return
+	
 	# Handle jump.
 	if (Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_up")) and is_on_floor():
 		velocity.y = JUMP_VELOCITY
