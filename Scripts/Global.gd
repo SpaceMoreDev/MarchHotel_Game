@@ -10,6 +10,7 @@ signal OnLoseHeatlh(amount : int)
 signal OnGainHeatlh(amount : int)
 
 func _ready() -> void:
+	load_data()
 	get_tree().scene_changed.connect(onchangescene)
 
 func get_player() -> Player:
@@ -46,7 +47,7 @@ func add_coins_count(count:int):
 	
 	coins+=count
 	player.coin_text.text = str(coins)
-	
+	save_data()
 	#var tween = get_tree().create_tween()
 	#
 	#tween.tween_property(player.coin_icon, "scale", Vector2(0.7, 0.7), 0.2) \
@@ -55,6 +56,18 @@ func add_coins_count(count:int):
 	#
 	#tween.tween_property(player.coin_icon, "scale", Vector2(1.0, 1.0), 0.1) \
 	#.set_ease(Tween.EASE_IN_OUT)
+
+func save_data():
+	var config = ConfigFile.new()
+	config.set_value("player", "coins", coins)
+	config.save("user://save.cfg")
+
+func load_data():
+	var config = ConfigFile.new()
+	var err = config.load("user://save.cfg")
+	
+	if err == OK:
+		coins = config.get_value("player", "coins", 0)
 
 func Death():
 	var player = get_player()

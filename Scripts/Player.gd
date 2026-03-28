@@ -52,6 +52,9 @@ func take_damage(attacker : Character, force : float = 500):
 	Global.OnLoseHeatlh.emit(1)
 
 func _ready() -> void:
+	
+	coin_text.text = str(Global.coins)
+	
 	if not self_active:
 		camera.enabled =false
 	Global.checkpoint_location = position

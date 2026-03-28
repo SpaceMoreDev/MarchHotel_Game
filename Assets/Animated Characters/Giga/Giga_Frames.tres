@@ -81,7 +81,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q4kfp")
 }],
-"loop": true,
+"loop": false,
 "name": &"Cast",
 "speed": 5.0
 }, {
