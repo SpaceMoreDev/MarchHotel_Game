@@ -16,8 +16,8 @@ animations = [{
 
 [resource]
 script = ExtResource("1_yst48")
-name = "Empty Tuna"
-creator = "@khashab"
+name = "Empty sardine can"
+creator = "by @khashab"
 value = 0.0
 frames = SubResource("SpriteFrames_naeba")
 metadata/_custom_type_script = "uid://dbli5264cjr1e"

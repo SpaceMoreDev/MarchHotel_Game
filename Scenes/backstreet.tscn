@@ -137,6 +137,31 @@ enabled = false
 
 [node name="Health_sys" parent="CanvasLayer" unique_id=1604869712 instance=ExtResource("10_ayeqa")]
 
+[node name="Control2" type="Control" parent="CanvasLayer" unique_id=2017903138]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1101.0
+offset_right = 1141.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control2" unique_id=1053159944]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -203.0
+offset_right = -30.0
+offset_bottom = 67.0
+grow_horizontal = 0
+theme_override_colors/font_shadow_color = Color(0.23137255, 0.23137255, 0.23137255, 0.38431373)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 20
+text = "Press 'R' to return"
+vertical_alignment = 1
+
 [node name="Camera2D2" type="Camera2D" parent="." unique_id=1476501221]
 position = Vector2(598, 448)
 limit_left = 0

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Fish" format=3 uid="uid://87bjf2vvw5g"]
+
+[ext_resource type="Texture2D" uid="uid://dsy8375mvgdcl" path="res://Assets/Data/Fish Data/Frames/fancy.png" id="1_5b4b3"]
+[ext_resource type="Script" uid="uid://dbli5264cjr1e" path="res://Scripts/Fish.gd" id="2_0dnjq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0dnjq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5b4b3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_0dnjq")
+name = "fancy fish"
+creator = "by @spacezehuman"
+rarity = 2
+value = 5000.0
+frames = SubResource("SpriteFrames_0dnjq")
+metadata/_custom_type_script = "uid://dbli5264cjr1e"

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Fish" format=3 uid="uid://bc0wwcp3anc4n"]
+
+[ext_resource type="Texture2D" uid="uid://b3qdvwgnd4s" path="res://Assets/Data/Fish Data/Frames/boot.png" id="1_r6xve"]
+[ext_resource type="Script" uid="uid://dbli5264cjr1e" path="res://Scripts/Fish.gd" id="2_cvdjc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cvdjc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_r6xve")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_cvdjc")
+name = "a nice boot!"
+creator = "by @spacezehuman"
+value = 0.0
+frames = SubResource("SpriteFrames_cvdjc")
+metadata/_custom_type_script = "uid://dbli5264cjr1e"

@@ -28,7 +28,7 @@ func set_fish_data(fish : Fish):
 		fish_name.add_theme_color_override("font_color", Color.PURPLE)
 	
 	fish_creator.text = fish.creator
-	fish_value.text = str(fish.value)
+	fish_value.text = str(int(fish.value))
 
 func _on_button_gui_input(event: InputEvent) -> void:
 	if visible:

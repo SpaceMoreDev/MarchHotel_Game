@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Fish" format=3 uid="uid://cdtvsob4hhk01"]
+
+[ext_resource type="Texture2D" uid="uid://dyvi16gqhelpj" path="res://Assets/Data/Fish Data/Frames/fish_purpule.png" id="1_t6meu"]
+[ext_resource type="Script" uid="uid://dbli5264cjr1e" path="res://Scripts/Fish.gd" id="2_ojer6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ojer6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_t6meu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_ojer6")
+name = "Stupid fish"
+creator = "by @spacezehuman"
+value = 50.0
+frames = SubResource("SpriteFrames_ojer6")
+metadata/_custom_type_script = "uid://dbli5264cjr1e"

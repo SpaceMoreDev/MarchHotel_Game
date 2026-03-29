@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Fish" format=3 uid="uid://dxubyo74mq1x6"]
+
+[ext_resource type="Texture2D" uid="uid://c1b267ju3tdkn" path="res://Assets/Data/Fish Data/Frames/nothing.png" id="1_y343q"]
+[ext_resource type="Script" uid="uid://dbli5264cjr1e" path="res://Scripts/Fish.gd" id="2_dvmxv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gqr33"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_y343q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_dvmxv")
+name = "nothing"
+creator = "by @khashab"
+value = 0.0
+frames = SubResource("SpriteFrames_gqr33")
+metadata/_custom_type_script = "uid://dbli5264cjr1e"

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Fish" format=3 uid="uid://ccd6x7lngth61"]
+
+[ext_resource type="Texture2D" uid="uid://dc1d6l675ugek" path="res://Assets/Data/Fish Data/Frames/kreska_art_20260327_224114_v1.1.62.png" id="1_5npj4"]
+[ext_resource type="Script" uid="uid://dbli5264cjr1e" path="res://Scripts/Fish.gd" id="1_6ue30"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1nftf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5npj4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_6ue30")
+name = "buff fish"
+creator = "by DORKS"
+value = 10.0
+frames = SubResource("SpriteFrames_1nftf")
+metadata/_custom_type_script = "uid://dbli5264cjr1e"

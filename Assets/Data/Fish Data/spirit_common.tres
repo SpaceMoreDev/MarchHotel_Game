@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Fish" format=3 uid="uid://xs7rhmkg8pxc"]
+
+[ext_resource type="Texture2D" uid="uid://cip6go66wq863" path="res://Assets/Data/Fish Data/Frames/OC_Goose_Water_Spirit_V1__date.png" id="1_e8hdd"]
+[ext_resource type="Script" uid="uid://dbli5264cjr1e" path="res://Scripts/Fish.gd" id="2_2txou"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2txou"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_e8hdd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_2txou")
+name = "Watery Spirit of the Goose "
+creator = "by @riptide_56"
+rarity = 2
+value = 1560.0
+frames = SubResource("SpriteFrames_2txou")
+metadata/_custom_type_script = "uid://dbli5264cjr1e"

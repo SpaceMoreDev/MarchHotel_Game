@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Fish" format=3 uid="uid://mr4sls5jh27m"]
+
+[ext_resource type="Script" uid="uid://dbli5264cjr1e" path="res://Scripts/Fish.gd" id="1_61ds7"]
+[ext_resource type="Texture2D" uid="uid://crghhk070sx68" path="res://Assets/Data/Fish Data/Frames/Fih.png" id="1_mftp6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c5qe3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mftp6")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_61ds7")
+name = "Amongfish"
+creator = "by @fazara"
+value = 5.0
+frames = SubResource("SpriteFrames_c5qe3")
+metadata/_custom_type_script = "uid://dbli5264cjr1e"

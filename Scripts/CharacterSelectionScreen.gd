@@ -53,4 +53,4 @@ func deactivate():
 func _on_button_button_down() -> void:
 	deactivate()
 	Global.get_player().self_active = true
-	$TextureRect/Button.focus_mode = 0
+	$Button.focus_mode = 0

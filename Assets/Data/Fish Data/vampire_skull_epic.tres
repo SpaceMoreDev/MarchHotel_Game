@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Fish" format=3 uid="uid://bs8loh8xga110"]
+
+[ext_resource type="Texture2D" uid="uid://cxmj6tj4nneya" path="res://Assets/Data/Fish Data/Frames/Vampire_skull.png" id="1_tbc3b"]
+[ext_resource type="Script" uid="uid://dbli5264cjr1e" path="res://Scripts/Fish.gd" id="2_ugkou"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ugkou"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tbc3b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_ugkou")
+name = "cursed skull"
+creator = "by @spacezehuman"
+rarity = 2
+value = 10000.0
+frames = SubResource("SpriteFrames_ugkou")
+metadata/_custom_type_script = "uid://dbli5264cjr1e"

@@ -17,8 +17,8 @@ animations = [{
 [resource]
 script = ExtResource("2_xwxd4")
 name = "Black Fish"
-creator = "@khashab"
+creator = "by @khashab"
 rarity = 1
-value = 50.0
+value = 250.0
 frames = SubResource("SpriteFrames_xwxd4")
 metadata/_custom_type_script = "uid://dbli5264cjr1e"

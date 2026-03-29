@@ -42,7 +42,9 @@ func on_qte_success():
 
 
 func _start_bubbles_timer():
-	bubbles.visible = false
+	get_tree().create_tween().tween_property(bubbles,"modulate:a",0,0.3)
+
+	#bubbles.visible = false
 	var rand = RandomNumberGenerator.new()
 	timer.start(rand.randf_range(min_wait,max_wait))
 
@@ -73,26 +75,28 @@ func _ready() -> void:
 
 func _time_out():
 	var pos = Vector2(
-		randf_range(min_limit.x, max_limit.y),
-		randf_range(min_limit.x, max_limit.y)
+		randf_range(min_limit.x, max_limit.x),
+		randf_range(min_limit.y, max_limit.y)
 	)
 	
 	bubbles.position = pos
-	bubbles.visible = true
-	
+	#bubbles.visible = true
+	get_tree().create_tween().tween_property(bubbles,"modulate:a",1,0.3)
 	var rand = RandomNumberGenerator.new()
 	await get_tree().create_timer(rand.randf_range(1, max_bubbles_wait)).timeout
 	_start_bubbles_timer()
 
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if bubbles.visible:
+	if bubbles.modulate != Color.TRANSPARENT:
 		if event is InputEventMouseButton:
 			if event.is_pressed():
-				bubbles.visible = false
+				bubbles.modulate = Color.TRANSPARENT
+				qte_bar.active = true
+				qte_bar.reset_qte()
 				qte_bar.visible = true
 				$AnimationPlayer.play("fishing_bar_slide_in")
-				qte_bar.active = true
+				
 				var rand_fish = get_random_fish_by_rarity()
 				selected_fish = rand_fish
 

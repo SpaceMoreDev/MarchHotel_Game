@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Fish" format=3 uid="uid://dsvqkbqxv8ga1"]
+
+[ext_resource type="Texture2D" uid="uid://bntgn7b8qtjwy" path="res://Assets/Data/Fish Data/Frames/stick.png" id="1_yqagm"]
+[ext_resource type="Script" uid="uid://dbli5264cjr1e" path="res://Scripts/Fish.gd" id="2_lbxjf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lbxjf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yqagm")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_lbxjf")
+name = "a sword stick!"
+creator = "by @spacezehuman"
+value = 10.0
+frames = SubResource("SpriteFrames_lbxjf")
+metadata/_custom_type_script = "uid://dbli5264cjr1e"

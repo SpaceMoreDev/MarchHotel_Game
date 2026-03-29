@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Fish" format=3 uid="uid://bwkscq3h0qoui"]
+
+[ext_resource type="Texture2D" uid="uid://b3sn1gvmvt8bi" path="res://Assets/Data/Fish Data/Frames/CorgiBreadFishLoaf_byLastOne.png" id="1_chfrf"]
+[ext_resource type="Script" uid="uid://dbli5264cjr1e" path="res://Scripts/Fish.gd" id="2_vkrer"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vkrer"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_chfrf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_vkrer")
+name = "Loaffish"
+creator = "by @saskatchenefflers"
+value = 30.0
+frames = SubResource("SpriteFrames_vkrer")
+metadata/_custom_type_script = "uid://dbli5264cjr1e"

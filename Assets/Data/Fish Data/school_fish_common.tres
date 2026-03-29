@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Fish" format=3 uid="uid://becuhb6v0dov"]
+
+[ext_resource type="Texture2D" uid="uid://d1sk4ucg0fwrk" path="res://Assets/Data/Fish Data/Frames/school.png" id="1_hcaiq"]
+[ext_resource type="Script" uid="uid://dbli5264cjr1e" path="res://Scripts/Fish.gd" id="2_2r1en"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2r1en"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hcaiq")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_2r1en")
+name = "school of fish"
+creator = "by @spacezehuman"
+value = 70.0
+frames = SubResource("SpriteFrames_2r1en")
+metadata/_custom_type_script = "uid://dbli5264cjr1e"

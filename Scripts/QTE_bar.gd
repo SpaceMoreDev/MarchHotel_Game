@@ -13,7 +13,7 @@ var waiting : bool = false
 
 @export var label : Label
 @export var progress_bar : ProgressBar
-@export var min_width := 0.05
+@export var min_width := 0.08
 @export var max_width := 0.15
 
 func reset_qte():
@@ -34,6 +34,7 @@ func reset_qte():
 
 func _ready() -> void:
 	visible = false
+	reset_qte()
 	progress_bar.material.set_shader_parameter("success_range", success_range)
 
 func _process(delta):
@@ -65,6 +66,7 @@ func _input(event):
 			
 			if t >= success_range.x and t <= success_range.y:
 				print("success")
+				
 				OnSuccess.emit()
 				visible = false
 				debug_name("success")

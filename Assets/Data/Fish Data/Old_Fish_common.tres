@@ -17,7 +17,8 @@ animations = [{
 [resource]
 script = ExtResource("2_2sucu")
 name = "Old Fish"
-creator = "@spacezehuman"
-value = 5.0
+creator = "by @spacezehuman"
+rarity = 1
+value = 50.0
 frames = SubResource("SpriteFrames_naeba")
 metadata/_custom_type_script = "uid://dbli5264cjr1e"

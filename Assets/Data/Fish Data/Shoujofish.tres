@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Fish" format=3 uid="uid://bg82pk5qi5t0g"]
+
+[ext_resource type="Texture2D" uid="uid://c8y6ctaebcwpv" path="res://Assets/Data/Fish Data/Frames/Mahou_shoujo_fih.png" id="1_22k7o"]
+[ext_resource type="Script" uid="uid://dbli5264cjr1e" path="res://Scripts/Fish.gd" id="2_pvkhv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pvkhv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_22k7o")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_pvkhv")
+name = "Shoujofish"
+creator = "by @fazara"
+rarity = 1
+value = 42.0
+frames = SubResource("SpriteFrames_pvkhv")
+metadata/_custom_type_script = "uid://dbli5264cjr1e"

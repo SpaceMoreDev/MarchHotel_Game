@@ -1,18 +1,86 @@
 [gd_scene format=4 uid="uid://cvwba3pbqfk7u"]
 
 [ext_resource type="Script" uid="uid://bn8g464ahdrpj" path="res://Scripts/BulletSpawner.gd" id="1_4c57u"]
-[ext_resource type="Texture2D" uid="uid://cnnd5ci7jjhwb" path="res://Assets/Backgrounds/background_solid_sky.png" id="1_kek77"]
 [ext_resource type="Texture2D" uid="uid://54katm374m7t" path="res://Assets/Backgrounds/bg_test.png" id="2_272bh"]
 [ext_resource type="PackedScene" uid="uid://bbon71wuwsej7" path="res://Scenes/player.tscn" id="5_272bh"]
 [ext_resource type="Resource" uid="uid://dqsu2fedqmii2" path="res://Assets/Data/Characters Data/Cash.tres" id="6_efxa6"]
 [ext_resource type="TileSet" uid="uid://dqv25wrpgfo3u" path="res://Assets/platforming_tile_set.tres" id="7_5vw27"]
 [ext_resource type="PackedScene" uid="uid://rmglkbtig7s3" path="res://Scenes/door.tscn" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://cdtwcugq8jfl7" path="res://Scenes/CharacterSelect/character_selection.tscn" id="9_4c57u"]
+[ext_resource type="Texture2D" uid="uid://ig3ngjbg5wsb" path="res://Assets/house_0.png" id="10_vivmo"]
 [ext_resource type="PackedScene" uid="uid://dg7m6lve24ayr" path="res://Scenes/minigameB_fishing.tscn" id="11_dg77c"]
 [ext_resource type="PackedScene" uid="uid://mu46pjxa4p7e" path="res://Scenes/coin.tscn" id="11_efxa6"]
+[ext_resource type="SpriteFrames" uid="uid://b54cun3h4aphd" path="res://Assets/barrel_sprite_frames.tres" id="12_074og"]
 [ext_resource type="PackedScene" uid="uid://cnnt1oe0ql2bk" path="res://Scenes/backstreet.tscn" id="12_dg77c"]
 [ext_resource type="Script" uid="uid://befw3w5j7t2ya" path="res://Scripts/cs_machine.gd" id="12_w48qg"]
+[ext_resource type="Texture2D" uid="uid://bkdbw4s4og3ht" path="res://Assets/Animated Characters/Goblin/sprite_sheet_Goblin_Idle.png" id="12_yaehf"]
 [ext_resource type="Texture2D" uid="uid://ucmht5wjw20p" path="res://Assets/CS_Machine.png" id="12_ycdy4"]
+[ext_resource type="Texture2D" uid="uid://db80f542182fv" path="res://Assets/Animated Characters/Goblin/sprite_sheet_attack.png" id="13_074og"]
+[ext_resource type="Texture2D" uid="uid://dhwck8ydkwhgq" path="res://Assets/lake.png" id="15_2cqfq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hoxre"]
+atlas = ExtResource("12_yaehf")
+region = Rect2(0, 0, 92, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyosm"]
+atlas = ExtResource("12_yaehf")
+region = Rect2(92, 0, 92, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fiy6"]
+atlas = ExtResource("12_yaehf")
+region = Rect2(184, 0, 92, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akvi3"]
+atlas = ExtResource("12_yaehf")
+region = Rect2(0, 128, 92, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsjak"]
+atlas = ExtResource("12_yaehf")
+region = Rect2(92, 128, 92, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dqak"]
+atlas = ExtResource("13_074og")
+region = Rect2(184, 128, 92, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cegan"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hoxre")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yyosm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fiy6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akvi3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsjak")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dqak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dqak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dqak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dqak")
+}],
+"loop": false,
+"name": &"throw",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dg77c"]
 radius = 195.1815
@@ -67,7 +135,7 @@ motion_mirroring = Vector2(768, 768)
 
 [node name="Sprite2D" type="Sprite2D" parent="map/ParallaxBackground/Background2" unique_id=1337361654]
 scale = Vector2(3, 3)
-texture = ExtResource("1_kek77")
+texture = ExtResource("2_272bh")
 centered = false
 
 [node name="Background" type="ParallaxLayer" parent="map/ParallaxBackground" unique_id=1109870863]
@@ -80,25 +148,25 @@ centered = false
 
 [node name="coins" type="Node" parent="map" unique_id=1793187200]
 
-[node name="coin2" parent="map/coins" unique_id=1330714917 instance=ExtResource("11_efxa6")]
-position = Vector2(1198, 609)
-
 [node name="coin4" parent="map/coins" unique_id=808427961 instance=ExtResource("11_efxa6")]
-position = Vector2(2223, 609)
+position = Vector2(1140, 507)
+
+[node name="coin6" parent="map/coins" unique_id=1026982860 instance=ExtResource("11_efxa6")]
+position = Vector2(965, 316)
+
+[node name="coin7" parent="map/coins" unique_id=1227041247 instance=ExtResource("11_efxa6")]
+position = Vector2(660, 316)
+
+[node name="coin5" parent="map/coins" unique_id=1233454814 instance=ExtResource("11_efxa6")]
+position = Vector2(497, 507)
 
 [node name="tilemaps" type="Node" parent="map" unique_id=1521054475]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="map/tilemaps" unique_id=2081961652]
+z_index = -5
 position = Vector2(622, 296)
-tile_map_data = PackedByteArray("AAD1/wcAAAAEAAAAAAD2/wcAAgAAAAAAAAD3/wcAAgAAAAAAAAD4/wcAAgAAAAAAAAD5/wcAAgAAAAAAAAD6/wcAAgAAAAAAAAD7/wcAAgAAAAAAAAD8/wcAAgAAAAAAAAD9/wcAAgAAAAAAAAD+/wcAAgAAAAAAAAD//wcAAgAAAAAAAAAAAAcAAgAAAAAAAAABAAcAAgAAAAAAAAACAAcAAgAAAAAAAAADAAcAAgAAAAAAAAAEAAcAAgAAAAAAAAAFAAcABAAAAAAAAAAEAAgAAgAAAAAAAAADAAgAAgAAAAAAAAACAAgAAgAAAAAAAAABAAgAAgAAAAAAAAAAAAgAAgAAAAAAAAD//wgAAgAAAAAAAAD+/wgAAgAAAAAAAAD9/wgAAgAAAAAAAAD8/wgAAgAAAAAAAAD7/wgAAgAAAAAAAAD6/wgAAgAAAAAAAAD5/wgAAgAAAAAAAAD4/wgAAgAAAAAAAAD3/wgAAgAAAAAAAAD2/wgAAgAAAAAAAAD1/wgAAAABAAAAAAAdAAgAAgAAAAAAAAAeAAgAAgAAAAAAAAAfAAgAAgAAAAAAAAAgAAgAAgAAAAAAAAAhAAgAAgAAAAAAAAAiAAgAAgAAAAAAAAAiAAcAAgAAAAAAAAAhAAcAAgAAAAAAAAAgAAcAAgAAAAAAAAAfAAcAAgAAAAAAAAAeAAcAAgAAAAAAAAAdAAcAAgAAAAAAAAAcAAcAAwAAAAAAAAAjAAcAAgAAAAAAAAAjAAgAAgAAAAAAAAD1/wYAAAAEAAAAAAD1/wUAAAAEAAAAAAD1/wQAAAAEAAAAAAD1/wMAAAAEAAAAAAD1/wIAAAAEAAAAAAD1/wEAAAAEAAAAAAD1/wAAAAAEAAAAAAD1////AAAEAAAAAAD1//7/AAAEAAAAAAD1//3/AAAEAAAAAAD1//z/AAAEAAAAAAD1//v/AAAEAAAAAAD1//r/AAAEAAAAAAD1//n/AAAEAAAAAAD1//j/AAAEAAAAAAD1//f/AAAEAAAAAAD1/+H/AAAEAAAAAAD1//b/AAAEAAAAAAD1//X/AAAEAAAAAAD1//T/AAAEAAAAAAD1//P/AAAEAAAAAAD1//H/AAAEAAAAAAD1//L/AAAEAAAAAAD1/+b/AAAEAAAAAAD1/+X/AAAEAAAAAAD1/+T/AAAEAAAAAAD1/+P/AAAEAAAAAAD1/+f/AAAEAAAAAAD1/+j/AAAEAAAAAAD1/+n/AAAEAAAAAAD1/+r/AAAEAAAAAAD1/+v/AAAEAAAAAAD1/+z/AAAEAAAAAAD1/+3/AAAEAAAAAAD1/+7/AAAEAAAAAAD1/+//AAAEAAAAAAD1//D/AAAEAAAAAAD1/+L/AAAEAAAAAAD1/+D/AAAEAAAAAAD1/9//AAAEAAAAAAD1/97/AAAEAAAAAAD1/93/AAAEAAAAAAD1/9z/AAAEAAAAAAD1/9v/AAAEAAAAAAD1/9r/AAAEAAAAAAD1/9n/AAAEAAAAAAD1/9j/AAAEAAAAAAD1/9f/AAAEAAAAAAD1/9b/AAAEAAAAAAD1/9X/AAAEAAAAAAD1/9T/AAAEAAAAAAD1/9P/AAAEAAAAAAD1/9L/AAAEAAAAAAD1/9H/AAAEAAAAAAD1/9D/AAAEAAAAAAD1/8//AAAEAAAAAAD1/87/AAAEAAAAAAD1/83/AAAEAAAAAAD1/8z/AAAEAAAAAAD1/8v/AAAEAAAAAAD1/8r/AAAEAAAAAAD1/8n/AAAEAAAAAAD1/8j/AAAEAAAAAAD1/8f/AAAEAAAAAAD1/8b/AAAEAAAAAAD1/8X/AAAEAAAAAAD1/8T/AAAEAAAAAAD1/8P/AAAEAAAAAAD1/8L/AAAEAAAAAAD1/8H/AAAEAAAAAAAGAAoAAAAHAAAAAAAGAAsAAAABAAAAAAAHAAoAAAAHAAAAAAAHAAsAAAABAAAAAAAIAAoAAAAHAAAAAAAIAAsAAAABAAAAAAAJAAoAAAAHAAAAAAAJAAsAAAABAAAAAAAKAAoAAAAHAAAAAAAKAAsAAAABAAAAAAALAAoAAAAHAAAAAAALAAsAAAABAAAAAAAMAAoAAAAHAAAAAAAMAAsAAAABAAAAAAANAAoAAAAHAAAAAAANAAsAAAABAAAAAAAOAAoAAAAHAAAAAAAOAAsAAAABAAAAAAAPAAoAAAAHAAAAAAAPAAsAAAABAAAAAAAQAAoAAAAHAAAAAAAQAAsAAAABAAAAAAARAAoAAAAHAAAAAAARAAsAAAABAAAAAAASAAoAAAAHAAAAAAASAAsAAAABAAAAAAATAAoAAAAHAAAAAAATAAsAAAABAAAAAAAUAAoAAAAHAAAAAAAUAAsAAAABAAAAAAAVAAoAAAAHAAAAAAAVAAsAAAABAAAAAAAWAAoAAAAHAAAAAAAWAAsAAAABAAAAAAAXAAoAAAAHAAAAAAAXAAsAAAABAAAAAAAYAAoAAAAHAAAAAAAYAAsAAAABAAAAAAAZAAoAAAAHAAAAAAAZAAsAAAABAAAAAAAaAAoAAAAHAAAAAAAaAAsAAAABAAAAAAAbAAoAAAAHAAAAAAAbAAsAAAABAAAAAAAPAAcABQAAAAAAAAAQAAcABQAAAAAAAAARAAcABQAAAAAAAAASAAcABQAAAAAAAAAHAAYAAwAAAAAAAAAIAAYABQAAAAAAAAAJAAYABQAAAAAAAAAKAAYABAAAAAAAAAAXAAYAAwAAAAAAAAAYAAYABQAAAAAAAAAZAAYABQAAAAAAAAAaAAYABAAAAAAAAAANAAcAAwAAAAAAAAAOAAcABQAAAAAAAAATAAcABQAAAAAAAAAUAAcABAAAAAAAAAAkAPj/AAAEAAAAAAAkAPn/AAAEAAAAAAAkAPr/AAAEAAAAAAAkAPv/AAAEAAAAAAAkAPz/AAAEAAAAAAAkAP3/AAAEAAAAAAAkAP7/AAAEAAAAAAAkAP//AAAEAAAAAAAkAAAAAAAEAAAAAAAkAAEAAAAEAAAAAAAkAAIAAAAEAAAAAAAkAAMAAAAEAAAAAAAkAAQAAAAEAAAAAAAkAAUAAAAEAAAAAAAkAAYAAAAEAAAAAAAkAAcAAAAEAAAAAAA=")
+tile_map_data = PackedByteArray("AAD1/wcAAAAEAAAAAAD2/wcAAgAAAAAAAAD3/wcAAgAAAAAAAAD4/wcAAgAAAAAAAAD5/wcAAgAAAAAAAAD6/wcAAgAAAAAAAAD7/wcAAgAAAAAAAAD8/wcAAgAAAAAAAAD9/wcAAgAAAAAAAAD+/wcAAgAAAAAAAAD//wcAAgAAAAAAAAAAAAcAAgAAAAAAAAABAAcAAgAAAAAAAAACAAcAAgAAAAAAAAADAAcAAgAAAAAAAAD1/wYAAAAEAAAAAAD1/wUAAAAEAAAAAAD1/wQAAAAEAAAAAAD1/wMAAAAEAAAAAAD1/wIAAAAEAAAAAAD1/wEAAAAEAAAAAAD1/wAAAAAEAAAAAAD1////AAAEAAAAAAD1//7/AAAEAAAAAAD1//3/AAAEAAAAAAD1//z/AAAEAAAAAAD1//v/AAAEAAAAAAD1//r/AAAEAAAAAAD1//n/AAAEAAAAAAD1//j/AAAEAAAAAAD1//f/AAAEAAAAAAD1/+H/AAAEAAAAAAD1//b/AAAEAAAAAAD1//X/AAAEAAAAAAD1//T/AAAEAAAAAAD1//P/AAAEAAAAAAD1//H/AAAEAAAAAAD1//L/AAAEAAAAAAD1/+b/AAAEAAAAAAD1/+X/AAAEAAAAAAD1/+T/AAAEAAAAAAD1/+P/AAAEAAAAAAD1/+f/AAAEAAAAAAD1/+j/AAAEAAAAAAD1/+n/AAAEAAAAAAD1/+r/AAAEAAAAAAD1/+v/AAAEAAAAAAD1/+z/AAAEAAAAAAD1/+3/AAAEAAAAAAD1/+7/AAAEAAAAAAD1/+//AAAEAAAAAAD1//D/AAAEAAAAAAD1/+L/AAAEAAAAAAD1/+D/AAAEAAAAAAD1/9//AAAEAAAAAAD1/97/AAAEAAAAAAD1/93/AAAEAAAAAAD1/9z/AAAEAAAAAAD1/9v/AAAEAAAAAAD1/9r/AAAEAAAAAAD1/9n/AAAEAAAAAAD1/9j/AAAEAAAAAAD1/9f/AAAEAAAAAAD1/9b/AAAEAAAAAAD1/9X/AAAEAAAAAAD1/9T/AAAEAAAAAAD1/9P/AAAEAAAAAAD1/9L/AAAEAAAAAAD1/9H/AAAEAAAAAAD1/9D/AAAEAAAAAAD1/8//AAAEAAAAAAD1/87/AAAEAAAAAAD1/83/AAAEAAAAAAD1/8z/AAAEAAAAAAD1/8v/AAAEAAAAAAD1/8r/AAAEAAAAAAD1/8n/AAAEAAAAAAD1/8j/AAAEAAAAAAD1/8f/AAAEAAAAAAD1/8b/AAAEAAAAAAD1/8X/AAAEAAAAAAD1/8T/AAAEAAAAAAD1/8P/AAAEAAAAAAD1/8L/AAAEAAAAAAD1/8H/AAAEAAAAAAAGAAcAAgAAAAAAAAAHAAcAAgAAAAAAAAAEAAcAAgAAAAAAAAAFAAcAAgAAAAAAAAAKAAcAAgAAAAAAAAALAAcAAgAAAAAAAAAJAAcAAgAAAAAAAAAIAAcAAgAAAAAAAAARAPj/AAAEAAAAAAARAPn/AAAEAAAAAAARAPr/AAAEAAAAAAARAPv/AAAEAAAAAAARAPz/AAAEAAAAAAARAP3/AAAEAAAAAAARAP7/AAAEAAAAAAARAP//AAAEAAAAAAARAAAAAAAEAAAAAAARAAEAAAAEAAAAAAARAAIAAAAEAAAAAAARAAMAAAAEAAAAAAARAAQAAAAEAAAAAAARAAUAAAAEAAAAAAARAAYAAAAEAAAAAAARAAcAAAAEAAAAAAAMAAcAAgAAAAAAAAANAAcAAgAAAAAAAAAOAAcAAgAAAAAAAAAPAAcAAgAAAAAAAAAQAAcAAgAAAAAAAAD9/wQABQAAAAAAAAD+/wQABQAAAAAAAAD//wQABAAAAAAAAAD8/wQAAwAAAAAAAAAGAAQAAwAAAAAAAAAHAAQABQAAAAAAAAAIAAQABQAAAAAAAAAJAAQABAAAAAAAAAAEAAEABQAAAAAAAAAFAAEABQAAAAAAAAAGAAEABAAAAAAAAAD//wEAAwAAAAAAAAAAAAEABQAAAAAAAAABAAEABQAAAAAAAAACAAEABQAAAAAAAAADAAEABQAAAAAAAAA=")
 tile_set = ExtResource("7_5vw27")
-
-[node name="CharacterBody2D" parent="." unique_id=375837386 instance=ExtResource("5_272bh")]
-position = Vector2(583, 670)
-character_data = ExtResource("6_efxa6")
-
-[node name="Camera2D" parent="CharacterBody2D" index="3" unique_id=1934535243]
-limit_right = 2925
 
 [node name="bulletspawner" type="Node2D" parent="." unique_id=1125454308 groups=["PlayerBulletSpawner"]]
 script = ExtResource("1_4c57u")
@@ -109,25 +177,116 @@ script = ExtResource("1_4c57u")
 offset_top = 601.0
 offset_bottom = 641.0
 
+[node name="Area2D3" parent="." unique_id=1222737581 instance=ExtResource("8_5vw27")]
+position = Vector2(1450, 627)
+message = "Try fishing! click on the bubbles with the mouse, once clicked you have to successed the quick time event."
+scene_to_transition_to = ExtResource("11_dg77c")
+metadata/_edit_group_ = true
+
+[node name="Lake" type="Sprite2D" parent="Area2D3" unique_id=10102443]
+position = Vector2(-1, -5)
+texture = ExtResource("15_2cqfq")
+
 [node name="Area2D" parent="." unique_id=375871244 instance=ExtResource("8_5vw27")]
-position = Vector2(314, 636)
+position = Vector2(220, 636)
 message = "Try to collect the coins before they fall. if you lose all 3 hearts its game over."
+metadata/_edit_group_ = true
+
+[node name="House0" type="Sprite2D" parent="Area2D" unique_id=1548088343]
+position = Vector2(-4, -15)
+texture = ExtResource("10_vivmo")
+
+[node name="Gob5" type="AnimatedSprite2D" parent="Area2D" unique_id=151339078]
+position = Vector2(-34, 50)
+sprite_frames = SubResource("SpriteFrames_cegan")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="Area2D2" parent="." unique_id=1372157655 instance=ExtResource("8_5vw27")]
-position = Vector2(1708, 636)
+z_index = -5
+position = Vector2(793, 637)
 message = "Try killing the endless goblins by shooting magic balls with 'F' at them. if you lose all 3 hearts its game over"
 scene_to_transition_to = ExtResource("12_dg77c")
+metadata/_edit_group_ = true
 
-[node name="Area2D3" parent="." unique_id=1222737581 instance=ExtResource("8_5vw27")]
-position = Vector2(2666, 636)
-message = "Try fishing! click on the bubbles with the mouse, once clicked you have to successed the quick time event. this one has no end."
-scene_to_transition_to = ExtResource("11_dg77c")
+[node name="msg" parent="Area2D2" index="0" unique_id=745734010]
+offset_top = -102.0
+offset_bottom = -62.0
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Area2D2" unique_id=2040751659]
+position = Vector2(-77, 83)
+scale = Vector2(1.3667933, 1.3667933)
+sprite_frames = ExtResource("12_074og")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="Sprite2D2" type="AnimatedSprite2D" parent="Area2D2" unique_id=1970429074]
+position = Vector2(-33.000008, 48.000004)
+scale = Vector2(1.3667933, 1.3667933)
+sprite_frames = ExtResource("12_074og")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="Sprite2D3" type="AnimatedSprite2D" parent="Area2D2" unique_id=1075138510]
+position = Vector2(114.999985, 85)
+scale = Vector2(1.3667933, 1.3667933)
+sprite_frames = ExtResource("12_074og")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="Sprite2D4" type="AnimatedSprite2D" parent="Area2D2" unique_id=196062860]
+position = Vector2(28.99999, 52.000004)
+scale = Vector2(1.3667933, 1.3667933)
+sprite_frames = ExtResource("12_074og")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="Sprite2D6" type="AnimatedSprite2D" parent="Area2D2" unique_id=1266318485]
+position = Vector2(18.999992, 92)
+scale = Vector2(1.3667933, 1.3667933)
+sprite_frames = ExtResource("12_074og")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="Sprite2D5" type="AnimatedSprite2D" parent="Area2D2" unique_id=1596587742]
+position = Vector2(65.99999, 48.000004)
+scale = Vector2(1.3667933, 1.3667933)
+sprite_frames = ExtResource("12_074og")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="Gob1" type="AnimatedSprite2D" parent="Area2D2" unique_id=551688224]
+position = Vector2(-63, 50)
+sprite_frames = SubResource("SpriteFrames_cegan")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Gob2" type="AnimatedSprite2D" parent="Area2D2" unique_id=88377724]
+position = Vector2(86, 50)
+sprite_frames = SubResource("SpriteFrames_cegan")
+animation = &"idle"
+autoplay = "idle"
+flip_h = true
+
+[node name="Gob3" type="AnimatedSprite2D" parent="Area2D2" unique_id=596769110]
+position = Vector2(41, 50)
+sprite_frames = SubResource("SpriteFrames_cegan")
+animation = &"idle"
+autoplay = "idle"
+flip_h = true
+
+[node name="Gob4" type="AnimatedSprite2D" parent="Area2D2" unique_id=409481190]
+position = Vector2(-16, 50)
+sprite_frames = SubResource("SpriteFrames_cegan")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="CS_Machine" type="Area2D" parent="." unique_id=958671564]
-position = Vector2(825.9999, 680)
+position = Vector2(814.99994, 296.99997)
 scale = Vector2(0.51999754, 0.51999754)
 collision_mask = 2
 script = ExtResource("12_w48qg")
+metadata/_edit_group_ = true
 
 [node name="msg" type="Control" parent="CS_Machine" unique_id=2071566279]
 modulate = Color(1, 1, 1, 0)
@@ -196,7 +355,19 @@ shape = SubResource("CircleShape2D_dg77c")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CS_Machine" unique_id=1971787724]
 libraries/ = SubResource("AnimationLibrary_ycdy4")
 
+[node name="CharacterBody2D" parent="." unique_id=375837386 instance=ExtResource("5_272bh")]
+z_index = 13
+position = Vector2(607, 672)
+character_data = ExtResource("6_efxa6")
+metadata/_edit_group_ = true
+
+[node name="Camera2D" parent="CharacterBody2D" index="3" unique_id=1934535243]
+limit_right = 1710
+
 [connection signal="body_entered" from="CS_Machine" to="CS_Machine" method="_on_body_entered"]
 [connection signal="body_exited" from="CS_Machine" to="CS_Machine" method="_on_body_exited"]
 
+[editable path="Area2D3"]
+[editable path="Area2D"]
+[editable path="Area2D2"]
 [editable path="CharacterBody2D"]
