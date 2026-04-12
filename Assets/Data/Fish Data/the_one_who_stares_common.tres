@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Fish" format=3 uid="uid://uw7qt7jin74m"]
+
+[ext_resource type="Texture2D" uid="uid://dlabqxp2dvao2" path="res://Assets/Data/Fish Data/Frames/The_one_who_stares2.png" id="1_32wjk"]
+[ext_resource type="Script" uid="uid://dbli5264cjr1e" path="res://Scripts/Fish.gd" id="1_p1dnc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g2bgm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_32wjk")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_p1dnc")
+name = "The one who stares"
+creator = "by @cirmy_"
+value = 48.0
+frames = SubResource("SpriteFrames_g2bgm")
+metadata/_custom_type_script = "uid://dbli5264cjr1e"

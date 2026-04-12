@@ -87,7 +87,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tppwe")
 }],
-"loop": true,
+"loop": false,
 "name": &"Cast",
 "speed": 5.0
 }, {

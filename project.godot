@@ -13,6 +13,8 @@ config_version=5
 config/name="MH_Game"
 run/main_scene="uid://cvwba3pbqfk7u"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="uid://dd5b3bsskepyg"
 config/icon="res://icon.svg"
 
 [autoload]

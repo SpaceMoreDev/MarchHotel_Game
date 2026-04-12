@@ -18,6 +18,6 @@ animations = [{
 script = ExtResource("2_2r1en")
 name = "school of fish"
 creator = "by @spacezehuman"
-value = 70.0
+value = 10.0
 frames = SubResource("SpriteFrames_2r1en")
 metadata/_custom_type_script = "uid://dbli5264cjr1e"

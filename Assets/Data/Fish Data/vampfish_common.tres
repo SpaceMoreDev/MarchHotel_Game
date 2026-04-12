@@ -16,8 +16,8 @@ animations = [{
 
 [resource]
 script = ExtResource("2_rcovh")
-name = "vampfish"
+name = "shrinpo"
 creator = "by @khashab"
-value = 40.0
+value = 20.0
 frames = SubResource("SpriteFrames_rcovh")
 metadata/_custom_type_script = "uid://dbli5264cjr1e"

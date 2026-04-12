@@ -19,6 +19,6 @@ script = ExtResource("2_xwxd4")
 name = "Black Fish"
 creator = "by @khashab"
 rarity = 1
-value = 250.0
+value = 70.0
 frames = SubResource("SpriteFrames_xwxd4")
 metadata/_custom_type_script = "uid://dbli5264cjr1e"

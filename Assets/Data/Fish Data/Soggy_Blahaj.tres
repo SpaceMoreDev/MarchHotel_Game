@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Fish" format=3 uid="uid://d4c2exg8i4t85"]
+
+[ext_resource type="Texture2D" uid="uid://2dl5pwq1l57x" path="res://Assets/Data/Fish Data/Frames/Soggy_Blahaj.png" id="1_g0ud8"]
+[ext_resource type="Script" uid="uid://dbli5264cjr1e" path="res://Scripts/Fish.gd" id="1_qbfte"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oocp8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g0ud8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_qbfte")
+name = "Soggy Blahaj"
+creator = "by @Luna.Maiden"
+rarity = 1
+value = 44.0
+frames = SubResource("SpriteFrames_oocp8")
+metadata/_custom_type_script = "uid://dbli5264cjr1e"

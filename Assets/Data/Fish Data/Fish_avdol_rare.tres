@@ -19,6 +19,6 @@ script = ExtResource("2_ua3s5")
 name = "cosplaying fish"
 creator = "by @spacezehuman"
 rarity = 1
-value = 500.0
+value = 80.0
 frames = SubResource("SpriteFrames_ua3s5")
 metadata/_custom_type_script = "uid://dbli5264cjr1e"

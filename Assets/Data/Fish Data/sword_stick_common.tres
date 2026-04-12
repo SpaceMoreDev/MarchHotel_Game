@@ -18,6 +18,5 @@ animations = [{
 script = ExtResource("2_lbxjf")
 name = "a sword stick!"
 creator = "by @spacezehuman"
-value = 10.0
 frames = SubResource("SpriteFrames_lbxjf")
 metadata/_custom_type_script = "uid://dbli5264cjr1e"

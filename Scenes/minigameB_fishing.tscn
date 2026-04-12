@@ -25,6 +25,7 @@
 [ext_resource type="Resource" uid="uid://b1udpokck286g" path="res://Assets/Data/Fish Data/pupperfish_common.tres" id="19_8bwk7"]
 [ext_resource type="Resource" uid="uid://mr4sls5jh27m" path="res://Assets/Data/Fish Data/Amongfish.tres" id="20_n5sls"]
 [ext_resource type="Resource" uid="uid://bg82pk5qi5t0g" path="res://Assets/Data/Fish Data/Shoujofish.tres" id="21_vyyq0"]
+[ext_resource type="Resource" uid="uid://d4c2exg8i4t85" path="res://Assets/Data/Fish Data/Soggy_Blahaj.tres" id="22_vyyq0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o3maj"]
 atlas = ExtResource("1_o3maj")
@@ -379,7 +380,7 @@ frame_progress = 0.31201333
 
 [node name="Fishing" type="Node2D" parent="." unique_id=607152023 node_paths=PackedStringArray("bubbles", "qte_bar", "fish_window")]
 script = ExtResource("1_1doho")
-fishes = Array[ExtResource("2_1y773")]([ExtResource("3_eiw34"), ExtResource("4_0px4i"), ExtResource("5_o8kjn"), ExtResource("7_h6cxf"), ExtResource("8_gdfq2"), ExtResource("9_71j1u"), ExtResource("10_71j1u"), ExtResource("11_biew4"), ExtResource("12_biew4"), ExtResource("13_g4e02"), ExtResource("14_w24wk"), ExtResource("15_k0mdx"), ExtResource("16_w24wk"), ExtResource("17_k0mdx"), ExtResource("18_e8738"), ExtResource("19_8bwk7"), ExtResource("20_n5sls"), ExtResource("21_vyyq0")])
+fishes = Array[ExtResource("2_1y773")]([ExtResource("3_eiw34"), ExtResource("4_0px4i"), ExtResource("5_o8kjn"), ExtResource("7_h6cxf"), ExtResource("8_gdfq2"), ExtResource("9_71j1u"), ExtResource("10_71j1u"), ExtResource("11_biew4"), ExtResource("12_biew4"), ExtResource("13_g4e02"), ExtResource("14_w24wk"), ExtResource("15_k0mdx"), ExtResource("16_w24wk"), ExtResource("17_k0mdx"), ExtResource("18_e8738"), ExtResource("19_8bwk7"), ExtResource("20_n5sls"), ExtResource("21_vyyq0"), ExtResource("22_vyyq0")])
 bubbles = NodePath("bubbles/Area2D")
 qte_bar = NodePath("CanvasLayer/QTE BAR")
 fish_window = NodePath("CanvasLayer/Control")
